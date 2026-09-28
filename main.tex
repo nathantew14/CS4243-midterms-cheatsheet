@@ -102,16 +102,11 @@
   \rule{\linewidth}{0.6pt}
 \end{center}
 \vspace{-1.5em}
-\section*{Variables and Operations}
-\subsection*{Statistics}
-\begin{description}[leftmargin=1.4em, itemsep=1pt]
-  \item[Mean / Std. dev.] \hfill \\[0.3em]
-  \begin{minipage}[t]{0.48\linewidth}
-    $\bar{x} = \dfrac{1}{n}\sum_{i=1}^n x_i$
-  \end{minipage}%
-  \begin{minipage}[t]{0.48\linewidth}
-    $\sigma = \sqrt{\dfrac{1}{n}\sum_i (x_i-\bar x)^2}$
-  \end{minipage}
+\section*{Misc. Operations}
+\sectionrule
+\begin{description}[leftmargin=1em, itemsep=0.3pt]
+  \item[Mean/Std. dev.]
+  \mbox{$\bar{x}=\tfrac1n\sum_i x_i$,\; $\sigma=\sqrt{\tfrac1n\sum_i (x_i-\bar x)^2}$}
   \item[Normalisation] \mbox{$x' = \dfrac{x-\mu}{\sigma}$ \; (or min-max: $\dfrac{x-\min}{\max-\min}$)}
   \item[Gaussian (1D)] $G(x) = \dfrac{1}{\sqrt{2\pi}\,\sigma}\,e^{-x^2/2\sigma^2}$
   \item[Gaussian (2D)] $G(x,y) = \dfrac{1}{2\pi\sigma^2}\,e^{-(x^2+y^2)/2\sigma^2}$
@@ -123,20 +118,19 @@
 \textbf{Recall:} $\dfrac{TP}{TP+FN}$ & \textbf{F1-score:} $\dfrac{2\,P\,R}{P+R}$
 \end{tabular}}
 
-\subsection*{Calculus}
 \resizebox{\linewidth}{!}{%
 \begin{tabular}{@{}ll@{}}
 \textbf{Line eqns:} $y=mx+b$; \newline $x\cos\theta+y\sin\theta=\rho$
 &
 \textbf{Euclidean dist:} $d=\sqrt{\sum_i(x_i-y_i)^2}$
 \\[6pt]
-\textbf{Gradient:} $\nabla f=\left(\dfrac{\partial f}{\partial x},\dfrac{\partial f}{\partial y}\right)$
-&
-\textbf{Laplacian:} $\nabla^2 f=\dfrac{\partial^2 f}{\partial x^2}+\dfrac{\partial^2 f}{\partial y^2}$
-\\[6pt]
 \textbf{Orientation:} $\theta=\tan^{-1}\!\left(\dfrac{f_y}{f_x}\right)$
 &
 \textbf{Magnitude:} $\|\nabla f\|=\sqrt{f_x^2+f_y^2}$
+\\[6pt]
+\phantom{\textbf{Orientation:}} $\theta=\tan^{-1}\!\left(\dfrac{G_y}{G_x}\right)$
+&
+\phantom{\textbf{Magnitude:}} $\|\nabla f\|=\sqrt{G_x^2+G_y^2}$
 \end{tabular}}
 
 
@@ -146,21 +140,17 @@
 
 \textbf{Digital Image Acquisition}
 
-\begin{center}
 \begin{tikzpicture}[
-    box/.style={draw, rounded corners, fill=gray!8, minimum height=0.7cm,
-                align=center, font=\tiny, inner sep=4pt},
-    arr/.style={-{Latex[length=1.5mm]}, thick},
-    every node/.append style={font=\tiny}
+    box/.style={draw, rounded corners=1pt, fill=gray!8, align=center,
+                font=\tiny, inner sep=2pt},
+    arr/.style={-{Latex[length=1mm]}}
   ]
-  \node[box] (light) {Light\\Source};
-  \node[box, right=1.5cm of light]  (scene) {Scene};
-  \node[box, right=1.5cm of scene]  (img)   {Imaging\\System};
-
-  \draw[arr] (light) -- (scene) node[midway, above, font=\tiny] {energy transfer};
-  \draw[arr] (scene) -- (img)   node[midway, above, font=\tiny] {energy transfer};
+  \node[box] (l) {Light Source};
+  \node[box, right=0.6cm of l] (s) {Scene};
+  \node[box, right=0.6cm of s] (i) {Imaging System};
+  \draw[arr] (l)--(s);
+  \draw[arr] (s)--(i);
 \end{tikzpicture}
-\end{center}
 
 \textbf{Illuminance} ($i(x,y)$, $0 \leq i \leq \infty$): amount of source illumination incident on scene.\\
 \textbf{Reflectance} ($r(x,y)$, $0 \leq r \leq 1$): amount of source illumination reflected by objects on scene.
@@ -203,12 +193,12 @@ $M$: rows, $N$: columns, $k$: bits/pixel, $b$: total bits
 \subsection{Colour Representation}
 \textbf{RGB Space}
 $im(x, y, b)$ = $y$ pixels down, $x$ pixels to right in the $b$th channel \\
-\textbf{HSV Space} Hue Saturation Value
+\textbf{HSV Space}: Hue = colour ($0$--$360^\circ$, 0 = red (orange $\rightarrow$ pink); Saturation = purity ($0$--$1$, 0 = grey); Value = brightness ($0$--$1$, 0 = black). Separates colour from intensity $\to$ robust to lighting
 
 \subsection{Bayer Filter}
 Each pixel only stores one color sample over it (RGB). Reduces intensity resolution.
 \begin{center}
-    \includegraphics[width=0.5\linewidth]{demosaic.png}
+    \includegraphics[width=0.75\linewidth]{demosaic.png}
 \end{center}
 \vspace{-1.5em}
 \begin{center}
