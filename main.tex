@@ -565,6 +565,19 @@ $\mbox{$\mathbf{z} = \mathbf{a}^{(L)} = W^{(L)}\mathbf{a}^{(L-1)} + \mathbf{b}^{
 \]
 
 \subsection{CNN-Based Object Detection}
+\textbf{R-CNNs (Region-Based ConvNets)}: Generate region candidates, extract CNN features for each region, regress bounding box (x,y,h,w) for each region, predict label per region. \\
+\textbf{Fast R-CNNs}: Extract CNN features in one pass by locating $(x, y)$ in CNN feature maps and extracting features w ROI pooling. \\
+\textbf{YOLO (v2) -- Anchor-based Detection}
+\begin{itemize}
+  \item Split image into $S \times S$ cells, each with predefined \textbf{anchors} (boxes w/ fixed sizes \& aspect ratios)
+  \item Predict at every (grid location, anchor) pair
+  \item \textbf{Objectness}: $P(\text{obj})$ for box. Predict class + box, skip if no object.
+  \item \textbf{Class score}: $P(\text{class} \mid \text{obj})$
+  \item \textbf{Box adjustment}: $P(\text{coords} \mid \text{obj})$, offsets to anchor
+\end{itemize}
+\textbf{Loss:} 
+$\mathcal{L}=\mathcal{L}_{\text{obj}}+\lambda_{\text{box}}\mathcal{L}_{\text{box}}+\mathcal{L}_{\text{class}}$;
+\footnotesize $\mathcal{L}_{\text{obj}}$: all anchors; $\mathcal{L}_{\text{box}},\mathcal{L}_{\text{class}}$: object anchors only
 
 \section*{Topic 6 - Segmentation}
 \sectionrule
