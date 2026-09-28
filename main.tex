@@ -146,21 +146,7 @@
 
 \textbf{Digital Image Acquisition}
 
-\begin{center}
-\begin{tikzpicture}[
-    box/.style={draw, rounded corners, fill=gray!8, minimum height=0.7cm,
-                align=center, font=\tiny, inner sep=4pt},
-    arr/.style={-{Latex[length=1.5mm]}, thick},
-    every node/.append style={font=\tiny}
-  ]
-  \node[box] (light) {Light\\Source};
-  \node[box, right=1.5cm of light]  (scene) {Scene};
-  \node[box, right=1.5cm of scene]  (img)   {Imaging\\System};
-
-  \draw[arr] (light) -- (scene) node[midway, above, font=\tiny] {energy transfer};
-  \draw[arr] (scene) -- (img)   node[midway, above, font=\tiny] {energy transfer};
-\end{tikzpicture}
-\end{center}
+\vspace{0.5em}
 
 \textbf{Illuminance} ($i(x,y)$, $0 \leq i \leq \infty$): amount of source illumination incident on scene.\\
 \textbf{Reflectance} ($r(x,y)$, $0 \leq r \leq 1$): amount of source illumination reflected by objects on scene.
@@ -169,6 +155,7 @@
 \textbf{Aperture}: how much light you let in (too much: bokeh, too narrow sharp image\\
 \textbf{Shutter Speed}: how much time you give light to accumulate (slow: motion blur, fast: freeze action)
 
+\vspace{-1.5em}
 
 \begin{center}
     \small
@@ -179,7 +166,7 @@
         \hline
         Definition & smallest discernible detail & smallest discernible $\delta$ intensity level \\
         \hline
-        Measurement & pixels / unit distance & bit depth / pixel \\
+        Measurement & pixels / unit distance & bit depth / pixel value \\
         \hline
         Determined by & sampling & quantisation \\
         \hline
@@ -210,7 +197,7 @@ Each pixel only stores one color sample over it (RGB). Reduces intensity resolut
 \begin{center}
     \includegraphics[width=0.5\linewidth]{demosaic.png}
 \end{center}
-\vspace{-1.5em}
+\vspace{-2.0em}
 \begin{center}
     \includegraphics[width=0.5\linewidth]{bayer.png}
 \end{center}

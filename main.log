@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.7.7)  28 SEP 2026 15:57
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.7.7)  28 SEP 2026 17:36
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -670,111 +670,104 @@ Overfull \hbox (6.7612pt too wide) in paragraph at lines 115--116
 <demosaic.png, id=4, 926.46124pt x 290.08376pt>
 File: demosaic.png Graphic file (type png)
 <use demosaic.png>
-Package pdftex.def Info: demosaic.png  used on input line 211.
+Package pdftex.def Info: demosaic.png  used on input line 198.
 (pdftex.def)             Requested size: 97.45073pt x 30.51059pt.
 <bayer.png, id=6, 619.31375pt x 401.5pt>
 File: bayer.png Graphic file (type png)
 <use bayer.png>
-Package pdftex.def Info: bayer.png  used on input line 215.
+Package pdftex.def Info: bayer.png  used on input line 202.
 (pdftex.def)             Requested size: 97.45073pt x 63.17531pt.
 
-Overfull \hbox (8.75566pt too wide) in paragraph at lines 224--224
+Overfull \hbox (8.75566pt too wide) in paragraph at lines 211--211
 []|$[]$|  
  []
 
 
-Overfull \vbox (0.40045pt too high) detected at line 224
+Overfull \vbox (0.40045pt too high) detected at line 211
  []
 
 
-Overfull \hbox (7.57509pt too wide) in paragraph at lines 224--224
+Overfull \hbox (7.57509pt too wide) in paragraph at lines 211--211
 []|$[]$|  
  []
 
 
-Overfull \vbox (0.20023pt too high) detected at line 224
+Overfull \vbox (0.20023pt too high) detected at line 211
  []
 
 <histogram.png, id=7, 707.64375pt x 423.5825pt>
 File: histogram.png Graphic file (type png)
 <use histogram.png>
-Package pdftex.def Info: histogram.png  used on input line 240.
+Package pdftex.def Info: histogram.png  used on input line 227.
 (pdftex.def)             Requested size: 97.45073pt x 58.33163pt.
 <sobel-1.png, id=8, 1192.455pt x 502.87875pt>
 File: sobel-1.png Graphic file (type png)
 <use sobel-1.png>
-Package pdftex.def Info: sobel-1.png  used on input line 275.
+Package pdftex.def Info: sobel-1.png  used on input line 262.
 (pdftex.def)             Requested size: 146.1761pt x 61.63963pt.
 <blur.png, id=9, 1176.395pt x 465.74pt>
 File: blur.png Graphic file (type png)
 <use blur.png>
-Package pdftex.def Info: blur.png  used on input line 309.
+Package pdftex.def Info: blur.png  used on input line 296.
 (pdftex.def)             Requested size: 146.1761pt x 57.86913pt.
 <laplacian.png, id=10, 690.58pt x 434.62375pt>
 File: laplacian.png Graphic file (type png)
 <use laplacian.png>
-Package pdftex.def Info: laplacian.png  used on input line 351.
+Package pdftex.def Info: laplacian.png  used on input line 338.
 (pdftex.def)             Requested size: 146.1761pt x 91.99654pt.
 <interpolatenms.png, id=11, 1008.76875pt x 186.6975pt>
 File: interpolatenms.png Graphic file (type png)
 <use interpolatenms.png>
-Package pdftex.def Info: interpolatenms.png  used on input line 364.
+Package pdftex.def Info: interpolatenms.png  used on input line 351.
 (pdftex.def)             Requested size: 139.16528pt x 25.75572pt.
+<gabor1d.png, id=12, 814.04124pt x 523.9575pt>
+File: gabor1d.png Graphic file (type png)
+<use gabor1d.png>
+Package pdftex.def Info: gabor1d.png  used on input line 383.
+(pdftex.def)             Requested size: 146.1761pt x 94.08441pt.
 [1
 
 {/usr/local/texlive/2026basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2026basic/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc} <./demosaic.png> <./bayer.png> <./histogram.png> <./sobel-1.png> <./blur.png> <./laplacian.png> <./interpolatenms.png>]
-<gabor1d.png, id=42, 814.04124pt x 523.9575pt>
-File: gabor1d.png Graphic file (type png)
-<use gabor1d.png>
-Package pdftex.def Info: gabor1d.png  used on input line 396.
-(pdftex.def)             Requested size: 146.1761pt x 94.08441pt.
-
-Overfull \hbox (5.41359pt too wide) in paragraph at lines 461--462
+Overfull \hbox (5.41359pt too wide) in paragraph at lines 448--449
  [] 
  []
 
 <classifierstage.png, id=43, 1141.26375pt x 521.95pt>
 File: classifierstage.png Graphic file (type png)
 <use classifierstage.png>
-Package pdftex.def Info: classifierstage.png  used on input line 478.
+Package pdftex.def Info: classifierstage.png  used on input line 465.
 (pdftex.def)             Requested size: 175.41013pt x 80.21648pt.
 <perceptron.png, id=44, 1074.0125pt x 435.6275pt>
 File: perceptron.png Graphic file (type png)
 <use perceptron.png>
-Package pdftex.def Info: perceptron.png  used on input line 483.
+Package pdftex.def Info: perceptron.png  used on input line 470.
 (pdftex.def)             Requested size: 146.1761pt x 59.28577pt.
 
-Overfull \hbox (31.878pt too wide) in paragraph at lines 488--492
+Overfull \hbox (31.878pt too wide) in paragraph at lines 475--479
 \T1/cmss/bx/n/8 Input:  $\OT1/cmr/bx/n/8 a[] \OT1/cmr/m/n/8 = \OT1/cmr/bx/n/8 u$\T1/cmss/m/n/8 ;  $[]$ 
  []
 
 
-Overfull \hbox (3.192pt too wide) detected at line 565
+Overfull \hbox (3.192pt too wide) detected at line 552
 []\OT1/cmr/m/n/8 (\OML/cmm/m/it/8 c; ^^\\OT1/cmr/m/n/8 ) = [][] \OML/cmm/m/it/8 p\OT1/cmr/m/n/8 (\OML/cmm/m/it/8 r\OT1/cmr/m/n/8 ) \OML/cmm/m/it/8 dr []\OT1/cmr/m/n/8 (\OML/cmm/m/it/8 ^^\\OT1/cmr/m/n/8 ) = [] [] [](\OML/cmm/m/it/8 c; ^^\\OT1/cmr/m/n/8 )
  []
 
-
-Overfull \vbox (1.7905pt too high) has occurred while \output is active []
-
-
-Overfull \vbox (0.5526pt too high) has occurred while \output is active []
-
- [2{/usr/local/texlive/2026basic/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc} <./gabor1d.png> <./classifierstage.png> <./perceptron.png>] (./main.aux)
+[2{/usr/local/texlive/2026basic/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc} <./gabor1d.png> <./classifierstage.png> <./perceptron.png>] (./main.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 20545 strings out of 469006
- 433105 string characters out of 5454814
- 968306 words of memory out of 5000000
- 48895 multiletter control sequences out of 15000+600000
+ 20524 strings out of 469006
+ 432789 string characters out of 5454814
+ 950908 words of memory out of 5000000
+ 48874 multiletter control sequences out of 15000+600000
  643812 words of font info for 77 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
- 102i,17n,107p,488b,1020s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 102i,17n,107p,488b,1019s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx6.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib8.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/cm-super/sfsi0800.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/cm-super/sfss0800.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/cm-super/sfsx0800.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/cm-super/sfsx0900.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb>
-Output written on main.pdf (2 pages, 3215084 bytes).
+Output written on main.pdf (2 pages, 3214319 bytes).
 PDF statistics:
  135 PDF objects out of 1000 (max. 8388607)
  71 compressed objects within 1 object stream
