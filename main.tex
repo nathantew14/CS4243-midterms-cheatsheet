@@ -435,7 +435,7 @@ $\sigma$ -- rate of decay of exp. envelope
   \draw[arr] (p)--(c);
 \end{tikzpicture}\par}
 
-\section*{Topic 5 - CNNs}
+\section*{Lecture 5 - CNNs}
 \sectionrule
 \textbf{Receptive field}: set of image pixels an intermediate output pixel depends on. \\
 \textit{Recursive formula} (per layer $l$, with kernel $k_l$, stride $s_l$):
@@ -451,12 +451,15 @@ $r_l = r_{l-1} + (k_l - 1)\, j_{l-1}, \qquad j_l = j_{l-1}\, s_l$
     \includegraphics[width=0.9\linewidth]{classifierstage.png}
 \end{center}
 
-\textbf{Perceptron}
-\begin{center}
-    \includegraphics[width=0.75\linewidth]{perceptron.png}
-\end{center}
-No of learnable parameters = weights (edges) + perceptrons (neurons). \\
-Neurons are total of all possible output nodes (all layers except input). We add perceptrons as bias terms.
+\textbf{Perceptron}\\
+\begin{minipage}[c]{0.5\linewidth}
+  \includegraphics[width=\linewidth]{perceptron.png}
+\end{minipage}%
+\hfill
+\begin{minipage}[c]{0.45\linewidth}\footnotesize
+  \#params = weights (edges) + biases (one per non-input neuron).\\
+  Neurons = all nodes except the input layer.
+\end{minipage}
 
 \textbf{MLP Formalism} \\
 \noindent\textbf{Input:} \quad
@@ -468,9 +471,8 @@ $\mathbf{a}^{(0)} = \mathbf{u}$;
 \mbox{$\mathbf{a}^{(\ell)} = \sigma\Big(W^{(\ell)}\mathbf{a}^{(\ell-1)} + \mathbf{b}^{(\ell)}\Big), \; \ell = 1,\dots,L-1$}
 \]
 \footnotesize
-$\boldsymbol{a}^{(\ell)}$: representation in layer $\ell$. \\
-$W^{(\ell)}$: weights in layer $\ell$. \\
-$\boldsymbol{b}^{(\ell)}$: biases in layer $\ell$. \\
+$\boldsymbol{a}^{(\ell)}$: representation; $W^{(\ell)}$: weights; 
+$\boldsymbol{b}^{(\ell)}$: biases in layer $\ell$; 
 $\sigma$: non-linear activation function
 
 \noindent\textbf{Output}\textbf{ layer:} \quad
@@ -478,7 +480,7 @@ $\mbox{$\mathbf{z} = \mathbf{a}^{(L)} = W^{(L)}\mathbf{a}^{(L-1)} + \mathbf{b}^{
 
 \subsection{Convolution}
 \begin{formulabox}
-    No of learnable parameters: $$k^2 \cdot C_{in} \cdot C_{out} + C_{out}$$
+    No of learnable parameters: $k^2 \cdot C_{in} \cdot C_{out} + C_{out}$
 \end{formulabox}
 \textbf{Strided}. Downsample each feature map. Reduce spatial resolution.
 \textbf{Dilated}. Enlarge receptive field without adding params or reducing resolution. 
