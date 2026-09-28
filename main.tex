@@ -231,13 +231,13 @@ Intensity scaling = $x_{ij} = a \cdot p_{ij}$
 \end{center}
 \textbf{Stretching:} linear rescale to full range
 $$s = \frac{r-r_{\min}}{r_{\max}-r_{\min}}(L-1)$$
-\textbf{Pros:} improves contrast; preserves relative brightness relationships \\
-\textbf{Cons:} limited effect if histogram already spans most of the range
+\textbf{Pros:} improve contrast; keeps relative brightness \\
+\textbf{Cons:} limited if histogram spans most of existing range
 
 \textbf{Equalisation:} redistribute via CDF for uniform histogram
 $$s = (L-1)\sum_{k=0}^{r} p(k), \quad s_{output} = k \cdot CDF(s_{input})$$
 \textbf{Pros:} more dramatic contrast change; reveals poorly represented ranges automatically \\
-\textbf{Cons:} can amplify noise; alters clinically irrelevant contrast
+\textbf{Cons:} can amplify noise; context-blind
 
 \subsection{Cross-Correlation and Convolution}
 
@@ -254,9 +254,8 @@ Larger $\sigma$ = more blur.
 
 \vspace{4pt}
 \textbf{Detail extraction (unsharp masking):}\\
-$\text{Details} = \text{Original} - \text{Blurred}$
-\quad $\Rightarrow$ \quad
-$\text{Sharpened} = \text{Original} + \alpha\cdot\text{Details}$
+$\text{Details} = \text{Orig.} - \text{Blurred}$ $\Rightarrow$
+$\text{Sharpened} = \text{Orig.} + \alpha\cdot\text{Details}$
 
 \section*{Lecture 3 - Gradients}
 \sectionrule
@@ -266,14 +265,11 @@ $\text{Sharpened} = \text{Original} + \alpha\cdot\text{Details}$
 \end{center}
 
 Vertical filter $S_y$ detects horizontal edges; 
-horizontal filter $S_x$ detects vertical edges (both across gradient). \\
-The gradient points across the edge, ie direction is normal to the edge. Gradient will point from darker to brighter intensities. The edge occurs at peaks.
+horizontal filter $S_x$ detects vertical edges (edge $\perp$ gradient). \\
+Gradient points from dark to bright intensities. Edge occurs at peaks.
 
-A 2D filter is \textbf{separable} if it can be written as an outer product of a
-column vector and a row vector:
-$$K = u\,v^T$$
-Convolving with the full 2D kernel $K$ is equivalent to convolving with $u$ then $v$
-separately. Cheaper since $1\times n + n\times 1$ multiplications beat $n\times n$.
+\textbf{2D Separable filter}: $K=uv^T$ (outer product of column $u$, row $v$).
+Conv with $K$ = conv with $u$ then $v$. Cost: $2n$ vs $n^2$ mults.
 
 \vspace{4pt}
 \textbf{Example — Vertical Sobel filter:}
@@ -361,7 +357,7 @@ Deriv.\ of Gaussian $\rightarrow$ Grad.\ mag/orient. $\rightarrow$ NMS $\rightar
 \end{enumerate}
 
 \textbf{Hysterisis Thresholding}: Set two thresholds, $H$ to start edge curves, and $L$ to grow and link edges (if connected to boundary, mark said pixel as boundary) \\
-\textit{Algorithm} $E_H$: set of all values passing $H$, $E_L$: set of all values passing $L$. Let $D = E_L - E_H$ (keep only edges of D connected to $E_H$) \\
+\textit{Algorithm} $E_H$: all values passing $H$, $E_L$: all values passing $L$. Let $D = E_L - E_H$ (keep only edges of D connected to $E_H$) \\
 Final image: $E_H \cup D'$
 
 \textbf{Hough Transform}
@@ -393,18 +389,15 @@ f_{mn} = \underbrace{\frac{1}{2\pi\sigma^2}\exp\left[-\frac{m^2+\gamma^2 n^2}{2\
 \;\, \underbrace{\sin\left[\frac{2\pi(\cos[\omega]m+\sin[\omega]n)}{\lambda}+\phi\right]}_{\substack{\text{2D-Sinusoid} \\ \text{selects orientation and frequency}}}
 $}
 \]
-$\omega$ -- orientation of sinusoid in 2D \\
-$\lambda$ -- wavelength of sinusoid (inversely proportional to $f$) \\
-$\phi$ -- phase of sinusoid; shift from center of kernel
-$\gamma$ -- aspect ratio of envelope coverage ($\gamma = 1$ means circular, otherwise elliptical) \\
-$\sigma$ -- rate of decay of exponential envelope
+$\omega$ -- orientation in 2D; $\lambda$ -- wavelength of sinusoid (inversely proportional to $f$); 
+$\phi$ -- phase of sinusoid; shift from center of kernel \\
+$\gamma$ -- aspect ratio of envelope coverage ($\gamma = 1$ means circular, else elliptical);
+$\sigma$ -- rate of decay of exp. envelope
 
 \subsection{Multi-Scale Reasoning}
-\textbf{Smoothing} suppresses details, which we want to ignore variations in smaller distances to focus on larger structure.
-\textit{Gaussian image pyramid} $\rightarrow$ progressively blur then downsample at fixed stride or downsampling rate. \\
-We should smooth before downsampling to prevent aliasing (high-frequency can mask as low frequency, ringing).
-
-\textbf{Scale selection} Measure responses on multiple scales. Choose maximum filter size that matches structure size to detect structures. 
+\textbf{Smoothing}: suppress fine detail $\to$ focus on larger structure. \\
+\textit{Gaussian pyramid}: blur, then downsample (fixed rate). Smooth first to avoid aliasing (high freq.\ masquerading as low). \\
+\textbf{Scale selection}: filter at multiple scales; pick the response peak (filter size matching structure size).
 
 \textbf{Single vs Multi-scale Representation} Given $r_i, \rho_i$ corresponding to response and scale at $i$. \\
 \textit{Single scale}: $r = [r_1, r_2, ..., r_k]$ \\
@@ -428,29 +421,19 @@ We should smooth before downsampling to prevent aliasing (high-frequency can mas
     \item Nearest Neighbour Classifier: $i^* = \arg\min_i ||t(\Omega)-t(\Omega_i)||$ where $\hat{c} = y_{i^*}$
     \item Nearest Class Mean: $\mu_c = \tfrac{1}{N_i}\sum{i:y_i=c}{t(\Omega_c)}$ where $\hat{c}(\Omega) = \arg\min ||t(\Omega)-\mu_c||$
 \end{enumerate}
-\vspace{-1.5em}
 
-\begin{center}
+{\centering
 \begin{tikzpicture}[
-    box/.style={draw, rounded corners, fill=gray!8, minimum height=0.5cm,
-                align=center, font=\tiny, inner sep=4pt},
-    arr/.style={-{Latex[length=1.5mm]}, thick},
-    caption/.style={font=\tiny, align=center, text width=2cm},
-    every node/.append style={font=\tiny}
+    box/.style={draw, rounded corners=1pt, fill=gray!8, align=center,
+                font=\tiny, inner sep=2pt},
+    arr/.style={-{Latex[length=1mm]}}
   ]
-  \node[box] (filter) {Filtering};
-  \node[box, right=1.5cm of filter]  (pool) {Pooling};
-  \node[box, right=1.5cm of pool]  (class)   {Classifier};
-
-  \draw[arr] (filter) -- (pool) ;
-  \draw[arr] (pool) -- (class);
-
-  \node[caption, below=0.1cm of filter] {extracts local features \\ deriv/Laplacian of \\ Gaussian, Gabor};
-  \node[caption, below=0.1cm of pool]  {reduces spatial resolution \\ Min/Max \\ Average};
-  \node[caption, below=0.1cm of class]  {predicts final label \\ Nearest neighbour \\ Nearest mean};
-\end{tikzpicture}
-\end{center}
-\vspace{-1.5em}
+  \node[box] (f) {\textbf{Filtering}\\ local features\\ DoG/LoG, Gabor};
+  \node[box, right=0.4cm of f] (p) {\textbf{Pooling}\\ $\downarrow$ resolution\\ min/max/avg};
+  \node[box, right=0.4cm of p] (c) {\textbf{Classifier}\\ predicts label\\ NN, nearest mean};
+  \draw[arr] (f)--(p);
+  \draw[arr] (p)--(c);
+\end{tikzpicture}\par}
 
 \section*{Topic 5 - CNNs}
 \sectionrule
