@@ -198,7 +198,7 @@ $M$: rows, $N$: columns, $k$: bits/pixel, $b$: total bits
 \subsection{File Extensions}
 \textbf{.bmp}: raw bit file (largest size) \\
 \textbf{.png}: predicts pixels based on neighbours, reconstructs original pixel value (lossless) \\
-\textbf{.jpg}: 8x8 image blocks w quantised spatial frequency coefficients, reconstruction is approximate (lossy)
+\textbf{.jpg}: 8x8 image blocks represented by 64 Discrete Cosine Transform coefficients, reconstruction is approximate (lossy). Zigzag ordering captures larger coefficients first; more efficient for Huffman entropy encoding
 
 \subsection{Colour Representation}
 \textbf{RGB Space}
