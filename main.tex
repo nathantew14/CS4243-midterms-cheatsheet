@@ -573,8 +573,6 @@ Separation of images into regions/objects. \\
 \textbf{Instance}: Each pixel has an object it belongs to.
 \textbf{Panoptic}: Combine semantic and instance.
 
-\textit{Pixel affinity}: evidence that makes two pixels belong to the same region (color, texture, etc.).
-
 \textbf{k-Means Clustering}: Iteratively re-assign points to nearest cluster center
 \begin{enumerate}
     \item Randomly initialize the cluster centers $c_1, \ldots, c_K$
@@ -588,7 +586,7 @@ Separation of images into regions/objects. \\
 \end{itemize}
 \textbf{Simple Linear Iterative Clustering (SLIC)}
 \begin{itemize}
-    \item \textit{Superpixel}: Group of pixels that share common traits. Compact and meaningfyl representation.
+    \item \textit{Superpixel}: Group of pixels sharing common traits.
     \item No of pixels: $n_{tp}$; Target no of superpixels: $n_{sp}$
     \item Initial width of each superpixel: $s = \sqrt{n_{tp} / n_{sp}}$
     \item Features: $z = [r,g,b,x,y]$
@@ -599,8 +597,8 @@ Separation of images into regions/objects. \\
 \end{itemize}
 \begin{enumerate}
     \item Split img. into grid of size $s \times s$. Set cluster centers as lowest gradient position in $3 \times 3$ neighborhood from superpixel center. 
-    \item For each cluster center, check distance to all pixels within $2s \times 2s$ neighborhood. Assign pixels to closest checked center.
-    \item Update cluster centers using mean; repeat until converged (Same as k-Means)
+    \item For each center, check distance to all pixels within $2s \times 2s$ neighborhood. Assign pixels to closest checked center.
+    \item Update centers using mean; repeat until converged
     \item Optional: Replace superpixel region by average value to create stained glass effect
 \end{enumerate}
 \begin{itemize}
@@ -608,7 +606,7 @@ Separation of images into regions/objects. \\
 \end{itemize}
 \textbf{Mean-Shift Clustering}: Find local density maxima in feature space 
 \begin{itemize}
-    \item \textit{Attraction basin}: {Region in feature space for which all trajectories of centroids lead to same mode}
+    \item \textit{Attraction basin}: {Region where all trajectories of centroids lead to same mode}
     \item \textit{Cluster}: {All data points in attraction basin of a mode}
 \end{itemize}
 \begin{enumerate}
@@ -620,18 +618,10 @@ Separation of images into regions/objects. \\
     \end{enumerate}
 \end{enumerate}
 \begin{itemize}
-    \item Segmentation with Mean Shift: Do mean shift and merge pixels in same attraction basin
-    \item Choosing window size: Trial and error, Sample points and use avg. dist. to knn. (Num. of neighbors needs to be large enough to ensure increase in density)
-    \begin{itemize}
-        \item Larger window size $\rightarrow$ Fewer clusters
-    \end{itemize}
+    \item Segment: run mean shift, merge pixels within basin
+    \item Larger window size $\rightarrow$ Fewer clusters
     \item Pros: No assumptions on cluster shape, 1 parameter, Finds variable num. of modes (vs. specified $k$ in k-Means), Robust to outliers
-    \item Cons: Choosing $h$, Slow, Scales poorly with feature space dimension
-    \item Optimizations:
-    \begin{itemize}
-        \item After each run of mean shift, assign all points within radius $r$ of end point to same cluster
-        \item Assign points in radius $c < r$ of search path to mode
-    \end{itemize}
+    \item Cons: Choosing $h$, scales poorly with feature space dimension
 \end{itemize}
 
 \end{multicols}
