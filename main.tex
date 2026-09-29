@@ -283,6 +283,13 @@ $$x_{ij} = \sum_{u=-k}^k\sum_{v=-k}^k f_{uv} \cdot p_{i-u,\,j-v}, \qquad X = P *
 $\text{Details} = \text{Orig.} - \text{Blurred}$;
 $\text{Sharp} = \text{Orig.} + \alpha\cdot\text{Details}$
 
+\subsection{Non-Linear Filtering}
+\textbf{Median filtering:} De-noise: without introducing new values; 
+preserves edges; \textbf{Mean}; \textbf{Min}; \textbf{max:} max-pooling summarises 
+neighbourhoods in feature map in CNNs\\
+\textbf{Morphology:} open: erode then dilate $\rightarrow$ remove small objects; 
+close: dilate then erode $\rightarrow$ fills holes.
+
 \section*{Lecture 3 - Gradients}
 \sectionrule
 \subsection{Sobel Filter}
