@@ -199,6 +199,12 @@ $<r, g, b> = \dfrac{R}{R + G + B} + \dfrac{R}{R + G + B} + \dfrac{R}{R + G + B}$
 
 \subsection{Bayer Filter}
 Each pixel only stores one color sample over it (RGB). Reduces intensity resolution.
+<<<<<<< HEAD
+=======
+\begin{center}
+    \includegraphics[width=0.8\linewidth]{demosaic.png}
+\end{center}
+>>>>>>> b78d527 (feat: remove mean-shift and add gamma)
 
 \resizebox{\linewidth}{!}{%
 \begin{tabular}{c c l c l}
@@ -218,7 +224,14 @@ $X$: entire image output
 Brightness = $x_{ij} = p_{ij} + b$ (clip when needed) \\
 Intensity scaling = $x_{ij} = a \cdot p_{ij}$
 
+<<<<<<< HEAD
 \textbf{Image Standardisation} resulting pixels are zero-mean, unit variance. Helps with numerical operations.
+=======
+\textbf{Image Standardisation} Preprocess to remove arbitrary brightness/contrast baselines. Algorithms process better when inputs are centered around 0. \\
+\textbf{Gamma Mapping} $x_{ij} = 255 \cdot \left(\frac{p_{ij}}{255} \right)^{\gamma}$ \\
+$\gamma < 1 \rightarrow$ raise mid-levels, $\uparrow$ range for darker areas \\ 
+$\gamma > 1 \rightarrow$ depress mid-levels, $\uparrow$ range for brighter areas \\ 
+>>>>>>> b78d527 (feat: remove mean-shift and add gamma)
 
 \textbf{Histogram Stretching vs. Equalisation}
 \noindent\begin{minipage}{\linewidth}
@@ -500,9 +513,8 @@ $\mbox{$\mathbf{z} = \mathbf{a}^{(L)} = W^{(L)}\mathbf{a}^{(L-1)} + \mathbf{b}^{
 \textbf{Strided}. Downsample each feature map. Reduce spatial resolution.
 \textbf{Dilated}. Enlarge receptive field without adding params or reducing resolution. 
 \begin{formulabox}
-    $H_{output} = \left\lfloor \frac{H_{input} + 2P - D(K-1) - 1}{S} \right\rfloor + 1$
-    Output size per dimension (stride $s$, padding $p$, filter size $k$)
-    $d(k - 1) + 1$  Effective kernel size
+    $H_{output} = \left\lfloor \frac{H_{input} + 2P - D(K-1) - 1}{S} \right\rfloor + 1$ \\
+    $K_{eff} = d(k - 1) + 1$
 \end{formulabox}
 
 \textbf{Logits}: unrestricted real-value scales $\rightarrow$ convert into probability distribution using softmax.
@@ -608,25 +620,6 @@ Separation of images into regions/objects. \\
 \end{enumerate}
 \begin{itemize}
     \item Modification of k-Means: Not random initialization, Compute pixel's distance only to closest set of centers
-\end{itemize}
-\textbf{Mean-Shift Clustering}: Find local density maxima in feature space 
-\begin{itemize}
-    \item \textit{Attraction basin}: {Region where all trajectories of centroids lead to same mode}
-    \item \textit{Cluster}: {All data points in attraction basin of a mode}
-\end{itemize}
-\begin{enumerate}
-    \item For each data point:
-    \begin{enumerate}
-        \item Define window around and get centroid
-        \item Shift window to centroid
-        \item Repeat until window centroid stops moving
-    \end{enumerate}
-\end{enumerate}
-\begin{itemize}
-    \item Segment: run mean shift, merge pixels within basin
-    \item Larger window size $\rightarrow$ Fewer clusters
-    \item Pros: No assumptions on cluster shape, 1 parameter, Finds variable num. of modes (vs. specified $k$ in k-Means), Robust to outliers
-    \item Cons: Choosing $h$, scales poorly with feature space dimension
 \end{itemize}
 
 \end{multicols}
