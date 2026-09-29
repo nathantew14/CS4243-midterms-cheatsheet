@@ -259,13 +259,14 @@ $$
     T^* = \operatorname*{argmin}_T \; w_1(T)\,\sigma_1^2(T) + w_2(T)\,\sigma_2^2(T)
 $$
 
-\subsection{Filtering}
+\subsection{Linear Filtering}
 
 \textbf{Purpose:} smoothing/averaging with neighbours reduces impulse (salt-and-pepper) noise; also used for edge detection and template matching. \\
-\textbf{Cross-Correlation:} slide kernel $F$ as-is, multiply \& sum
-$$x_{ij} = \sum_{u}\sum_{v} f_{uv} \cdot p_{i+u,\,j+v}, \qquad X = P \otimes F$$
-\textbf{Convolution:} flip kernel $180^\circ$ first, then multiply \& sum. Commutative and associative.
-$$x_{ij} = \sum_{u}\sum_{v} f_{uv} \cdot p_{i-u,\,j-v}, \qquad X = P * F$$
+\textbf{Cross-Correlation:} slide kernel $F$ as-is, multiply \& sum.\\
+Measures similarity petween patch and template
+$$x_{ij} = \sum_{u=-k}^k\sum_{v=-k}^k f_{uv} \cdot p_{i+u,\,j+v}, \qquad X = P \otimes F$$
+\textbf{Convolution:} flip kernel $180^\circ$ first. Commutative and associative. Applies image transformation.
+$$x_{ij} = \sum_{u=-k}^k\sum_{v=-k}^k f_{uv} \cdot p_{i-u,\,j-v}, \qquad X = P * F$$
 \textbf{Equal when:} kernel is symmetric under $180^\circ$ rotation, i.e.\ $F = F_{flip}$ (e.g.\ box filter, Gaussian). \\
 
 \textbf{Normalised cross-correlation:}
