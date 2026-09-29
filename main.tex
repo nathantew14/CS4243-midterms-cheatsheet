@@ -268,11 +268,9 @@ $$x_{ij} = \sum_{u}\sum_{v} f_{uv} \cdot p_{i+u,\,j+v}, \qquad X = P \otimes F$$
 $$x_{ij} = \sum_{u}\sum_{v} f_{uv} \cdot p_{i-u,\,j-v}, \qquad X = P * F$$
 \textbf{Equal when:} kernel is symmetric under $180^\circ$ rotation, i.e.\ $F = F_{flip}$ (e.g.\ box filter, Gaussian). 
 
-\textbf{Gaussian Kernel}\\
-Used as the filter $f_{uv}$ in cross-correlation/convolution above to smooth/blur.
-Larger $\sigma$ = more blur.
+\textbf{Box filter}: simple averaging, can cause ringing effect\\
+\textbf{Gaussian kernel}: Closer pixels have greater effect. Larger $\sigma$ = more blur. Kernel size typically 6x of $\sigma$.
 
-\vspace{4pt}
 \textbf{Detail extraction (unsharp masking):}\\
 $\text{Details} = \text{Orig.} - \text{Blurred}$ $\Rightarrow$
 $\text{Sharpened} = \text{Orig.} + \alpha\cdot\text{Details}$
