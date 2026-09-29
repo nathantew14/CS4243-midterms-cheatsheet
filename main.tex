@@ -202,26 +202,36 @@ Each pixel only stores one color sample over it (RGB). Reduces intensity resolut
 
 \section*{Lecture 2 - Point Processing and Filtering}
 \sectionrule
-\textbf{Point processing: } $x_{ij} = f(p_{ij})$ \\
-\textbf{Filtering: } $x_{ij} = f(w_{ij})$ 
 
+$P$: 2D array of pixel data; $p_{ij}$/$x_{ij}$: pixel input/output at position $(i,j)$; $w_{ij}$: window centred at $(i,j)$; \\ 
+$X$: entire image output
 \subsection{Point Processing}
 Brightness = $x_{ij} = p_{ij} + b$ (clip when needed) \\
 Intensity scaling = $x_{ij} = a \cdot p_{ij}$
 
-\textbf{Image Standardisation} Preprocess to remove arbitrary brightness/contrast baselines. Algorithms process better when inputs are centered around 0.
+\textbf{Image Standardisation} resulting pixels are zero-mean, unit variance. Helps with numerical operations.
 
 \textbf{Histogram Stretching vs. Equalisation}
-\begin{center}
-    \includegraphics[width=0.5\linewidth]{histogram.png}
-\end{center}
+\noindent\begin{minipage}{\linewidth}
+    \centering
+    \begin{minipage}{0.66\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{histogram.png}
+    \end{minipage}\hfill
+    \begin{minipage}{0.3\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{Unequalized_Histogram.svg.png}\\[4pt]
+        \includegraphics[width=\linewidth]{Equalized_Histogram.svg.png}
+    \end{minipage}
+\end{minipage}
 \textbf{Stretching:} linear rescale to full range
-$$s = \frac{r-r_{\min}}{r_{\max}-r_{\min}}(L-1)$$
+$$x = \frac{p-p_{\min}}{p_{\max}-p_{\min}}(L-1)$$
 \textbf{Pros:} improve contrast; keeps relative brightness \\
-\textbf{Cons:} limited if histogram spans most of existing range
+\textbf{Cons:} extreme noise values prevent stretching
 
-\textbf{Equalisation:} redistribute via CDF for uniform histogram
-$$s = (L-1)\sum_{k=0}^{r} p(k), \quad s_{output} = k \cdot CDF(s_{input})$$
+\textbf{Equalisation:} redistribute via CDF \\
+$s$: pixel intensity, $L-1=k$
+$$s_{out} = (L-1)\cdot\sum_{i=0}^{r_{in}}p(i), \quad s_{output} = k \cdot CDF(s_{input})$$
 \textbf{Pros:} more dramatic contrast change; reveals poorly represented ranges automatically \\
 \textbf{Cons:} can amplify noise; context-blind
 
