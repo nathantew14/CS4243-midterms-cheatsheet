@@ -364,33 +364,37 @@ $g$: filter kernel, $h$: Gaussian kernel, $f$: input
 
 \textbf{Laplacian of Gaussian Filter}
 
-\vspace{-1em}
-\begin{center}
-    \includegraphics[width=0.75\linewidth]{laplacian.png}
-\end{center}
-\vspace{-1.5em}
+\noindent\begin{minipage}[c]{0.75\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{laplacian.png}
+\end{minipage}%
+\begin{minipage}[c]{0.25\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{laplace-filters.png}
+\end{minipage}
+
 \textbf{Zero crossings}. Localise edges more accurately but less convenient to use.
 
 \subsection{Canny Edge Detector}
 Deriv.\ of Gaussian $\rightarrow$ Grad.\ mag/orient. $\rightarrow$ NMS $\rightarrow$ Hysteresis thresh.\\
-\textbf{Non-Maximum Suppression}: Only keep local maximums for edges (so edges will be one pixel wide.
+\textbf{Non-Maximum Suppression}: Only keep local maximums for edges (so edges will be one pixel wide).\\
 \textit{Algorithm} Given magnitude map $M(x, y)$ and orientation map $\theta(x, y)$, for every $(x, y)$
 \begin{enumerate}
     \item Find two neighbours in that direction according to the nearest angle ($+\theta, -\theta$)
     \item Interpolate the two neighbour values, with value $= x * (a - b) + b$, where $a, b$ are the two real neighbour pixel magnitudes, and $x$ is the fractional distance, $x = \tan(\theta mod 90)$
-    \begin{center}
-        \includegraphics[width=0.75\linewidth]{interpolatenms.png}
-    \end{center}
     \item Compare centre pixel to interpolated neighbours. 
     \begin{formulabox}
         If $M(x, y) \geq $ both neighbours: keep $M(x, y)$
         Else: suppress and set $M(x, y) = 0$
     \end{formulabox}
 \end{enumerate}
+\begin{center}
+    \includegraphics[width=\linewidth]{interpolation.png}
+\end{center}
+\vspace{-1em}
 
 \textbf{Hysterisis Thresholding}: Set two thresholds, $H$ to start edge curves, and $L$ to grow and link edges (if connected to boundary, mark said pixel as boundary) \\
-\textit{Algorithm} $E_H$: all values passing $H$, $E_L$: all values passing $L$. Let $D = E_L - E_H$ (keep only edges of D connected to $E_H$) \\
-Final image: $E_H \cup D'$
+\textit{Algorithm} $E_H$: all values passing $H$, $E_L$: all values passing $L$. Let $D = E_L - E_H$ (keep only edges of D connected to $E_H$) $\Rightarrow$ Final image: $E_H \cup D'$
 
 \textbf{Hough Transform}
 \textit{Algorithm} Given magnitude map $M(x, y)$ and orientation map $\theta(x, y)$, for every $(x, y)$
