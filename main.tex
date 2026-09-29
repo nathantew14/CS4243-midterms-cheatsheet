@@ -266,7 +266,14 @@ $$
 $$x_{ij} = \sum_{u}\sum_{v} f_{uv} \cdot p_{i+u,\,j+v}, \qquad X = P \otimes F$$
 \textbf{Convolution:} flip kernel $180^\circ$ first, then multiply \& sum. Commutative and associative.
 $$x_{ij} = \sum_{u}\sum_{v} f_{uv} \cdot p_{i-u,\,j-v}, \qquad X = P * F$$
-\textbf{Equal when:} kernel is symmetric under $180^\circ$ rotation, i.e.\ $F = F_{flip}$ (e.g.\ box filter, Gaussian). 
+\textbf{Equal when:} kernel is symmetric under $180^\circ$ rotation, i.e.\ $F = F_{flip}$ (e.g.\ box filter, Gaussian). \\
+
+\textbf{Normalised cross-correlation:}
+\vspace{-0.8em}
+\begin{center}
+    \includegraphics[width=\linewidth]{norm-cross-correlation.png}
+\end{center}
+\vspace{-0.7em}
 
 \textbf{Box filter}: simple averaging, can cause ringing effect\\
 \textbf{Gaussian kernel}: Closer pixels have greater effect. Larger $\sigma$ = more blur. Kernel size typically 6x of $\sigma$.
