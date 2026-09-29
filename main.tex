@@ -449,7 +449,7 @@ $\sigma$ -- rate of decay of exp. envelope
 \end{enumerate}
 
 \begin{formulabox}
-    To compare textures, $D(\Omega_A, \Omega_B) = ||t(\Omega_a) - t(\Omega_a)||$, i.e. $D$ is the Euclidean distance.
+    To compare textures, $D(\Omega_A, \Omega_B) = ||t(\Omega_a) - t(\Omega_b)||$, i.e. $D$ is the Euclidean distance.
 \end{formulabox}
 
 \textit{Classifiers}
@@ -516,7 +516,7 @@ $\mbox{$\mathbf{z} = \mathbf{a}^{(L)} = W^{(L)}\mathbf{a}^{(L-1)} + \mathbf{b}^{
 
 \subsection{Convolution}
 \begin{formulabox}
-    No of learnable parameters: $k^2 \cdot C_{in} \cdot C_{out} + C_{out}$
+    No. of learnable parameters: $k^2 \cdot C_{in} \cdot C_{out} + C_{out}$
 \end{formulabox}
 \textbf{Strided}. Downsample each feature map. Reduce spatial resolution.
 \textbf{Dilated}. Enlarge receptive field without adding params or reducing resolution. 
@@ -526,6 +526,8 @@ $\mbox{$\mathbf{z} = \mathbf{a}^{(L)} = W^{(L)}\mathbf{a}^{(L-1)} + \mathbf{b}^{
 \end{formulabox}
 
 \textbf{Logits}: unrestricted real-value scales $\rightarrow$ convert into probability distribution using softmax.
+
+\textbf{Softmax:} $\sigma(\mathbf{z})_i = \frac{e^{z_i}}{\sum_{j=1}^{C} e^{z_j}}$ for $i = 1, \dots, C$ classes. \\
 
 \subsection{Loss functions}
 \begin{center}
