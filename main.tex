@@ -235,6 +235,11 @@ $$s_{out} = (L-1)\cdot\sum_{i=0}^{r_{in}}p(i), \quad s_{output} = k \cdot CDF(s_
 \textbf{Pros:} more dramatic contrast change; reveals poorly represented ranges automatically \\
 \textbf{Cons:} can amplify noise; context-blind
 
+\textbf{Otsu's method}: find the optimal threshold $T^*$ that minimises the sum of variances of pixels below and above the threshold \\
+$$
+    T^* = \operatorname*{argmin}_T \; w_1(T)\,\sigma_1^2(T) + w_2(T)\,\sigma_2^2(T)
+$$
+
 \subsection{Cross-Correlation and Convolution}
 
 \textbf{Purpose:} smoothing/averaging with neighbours reduces impulse (salt-and-pepper) noise; also used for edge detection and template matching. \\
