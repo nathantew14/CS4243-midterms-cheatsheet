@@ -307,14 +307,6 @@ Applies blurring as differentiation is sensitive to noise.
 \textbf{2D Separable filter}: $K=uv^T$ (outer product of column $u$, row $v$).
 Conv with $K$ = conv with $u$ then $v$. Cost: $2n$ vs $n^2$ mults.
 
-\vspace{4pt}
-\textbf{Example — Vertical Sobel filter:}
-\begin{enumerate}[leftmargin=1.2em, itemsep=1pt]
-  \item \textbf{Smooth} horizontally: $[1,\,2,\,1]$
-  \item \textbf{Differentiate} vertically: $[1,\,0,\,-1]^T$
-\end{enumerate}
-$$S_y = \begin{bmatrix}1\\0\\-1\end{bmatrix}\begin{bmatrix}1 & 2 & 1\end{bmatrix}$$
-
 \textbf{Computing gradients}
 \begin{enumerate}
     \item Convolve gradient filter with image f to compute image gradient components \\ 
