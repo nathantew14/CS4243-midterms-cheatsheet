@@ -1,6 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1790588239.01085 "/Users/nathan/Development/nus/y3s1/cs4243/midterms-cheatsheet/main.tex" "main.pdf" "main" 1790588240.58151 0
-  "/Users/nathan/Development/nus/y3s1/cs4243/midterms-cheatsheet/main.tex" 1790588238.84175 26808 bab9737572fc14f37f1d96448a4bff77 ""
+["pdflatex"] 1790665996.56123 "main.tex" "main.pdf" "main" 1790665998.25035 0
   "/usr/local/texlive/2026basic/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/local/texlive/2026basic/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2026basic/texmf-dist/fonts/tfm/jknappen/ec/ecrm1000.tfm" 1136768653 3584 adb004a0c8e7c46ee66cad73671f37b4 ""
@@ -179,16 +178,15 @@
   "/usr/local/texlive/2026basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1783413995 378359 d6cf2a029f14acd9a10dec5deb720188 ""
   "/usr/local/texlive/2026basic/texmf-var/web2c/pdftex/pdflatex.fmt" 1783413553 2966189 ca46846be8bd1dad0f176e279713b477 ""
   "/usr/local/texlive/2026basic/texmf.cnf" 1772405582 628 bbc09d6d38872d53c11bb48dc9b14e88 ""
-  "bayer.png" 1790492738 91768 48f3963e56ebccb0f72710be2f539191 ""
   "blur.png" 1790492738 410145 f690866dec55d839dfd652094695187a ""
   "classifierstage.png" 1790492738 361978 22f2bd5582651564008142278655d8b2 ""
-  "demosaic.png" 1790492738 300250 13b56c4d5019898a3f988a2da4bf4f04 ""
+  "demosaic-smaller.png" 1790665876.04231 81499 e4acee94617a2828e594ec3744e03c5f ""
   "gabor1d.png" 1790492738 481663 69c99f9c2231c3c9cf85dd94068ba157 ""
   "histogram.png" 1790492738 511052 ff9f600dbc1031bcd0c9ff9467a81f98 ""
   "interpolatenms.png" 1790492738 317578 232ba1d759ac8d9893fe379f2b826dc0 ""
   "laplacian.png" 1790492738 245122 da13d838410d4962ae42efd2fca612be ""
-  "main.aux" 1790588240.50645 1760 e0f8b45828d777a397805279521088dd "pdflatex"
-  "main.tex" 1790588238.84175 26808 bab9737572fc14f37f1d96448a4bff77 ""
+  "main.aux" 1790665998.11137 1760 e0f8b45828d777a397805279521088dd "pdflatex"
+  "main.tex" 1790665995.85597 26551 35e1e76289c067745dd9a92d9375ea53 ""
   "perceptron.png" 1790492738 272508 1df32db7df516cccdfed1078e4beb109 ""
   "sobel-1.png" 1790492738 298801 d550859efed7dd41298cf99a45ec557a ""
   (generated)

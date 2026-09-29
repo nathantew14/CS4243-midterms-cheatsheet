@@ -194,20 +194,13 @@ $im(x, y, b)$ = $y$ pixels down, $x$ pixels to right in the $b$th channel \\
 
 \subsection{Bayer Filter}
 Each pixel only stores one color sample over it (RGB). Reduces intensity resolution.
-\begin{center}
-    \includegraphics[width=0.5\linewidth]{demosaic.png}
-\end{center}
-\vspace{-2.0em}
-\begin{center}
-    \includegraphics[width=0.5\linewidth]{bayer.png}
-\end{center}
 
 \resizebox{\linewidth}{!}{%
 \begin{tabular}{c c l c l}
-\multirow{4}{*}{$g(x,y)$} & \ldelim\{{4}{0pt} & $[R,G,B]_B = [f(x+1,y+1), f(x+1,y), f(x,y)]$ & & \text{sensitive to blue} \\[6pt]
- & & $[R,G,B]_{GB} = [f(x,y+1), f(x,y), f(x-1,y)]$ & \multirow{2}{*}{\rdelim\}{2}{0pt}} & \text{sensitive to green followed by} \\
- & & $[R,G,B]_{GR} = [f(x+1,y), f(x,y), f(x,y-1)]$ & & \text{blue / red in row} \\[6pt]
- & & $[R,G,B]_{R} = [f(x,y), f(x-1,y), f(x-1,y-1)]$ & & \text{sensitive to red} \\
+\multirow{4}{*}{$g(x,y)$} & \ldelim\{{5}{0pt} & $[R,G,B]_B = [f(x+1,y+1), f(x+1,y), f(x,y)]$ & \multirow{5}{*}{\includegraphics[width=0.3\linewidth]{demosaic-smaller.png}} \\[6pt]
+ & & $[R,G,B]_{GB} = [f(x,y+1), f(x,y), f(x-1,y)]$    \\
+ & & $[R,G,B]_{GR} = [f(x+1,y), f(x,y), f(x,y-1)]$    \\[6pt]
+ & & $[R,G,B]_{R} = [f(x,y), f(x-1,y), f(x-1,y-1)]$   \\
 \end{tabular}}
 
 
