@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.7.7)  29 SEP 2026 15:02
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.7.7)  29 SEP 2026 15:07
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -668,73 +668,73 @@ Overfull \hbox (6.7612pt too wide) in paragraph at lines 115--116
  []
 
 
-Overfull \hbox (8.75566pt too wide) in paragraph at lines 217--217
+Overfull \hbox (8.75566pt too wide) in paragraph at lines 218--218
 []|$[]$|  
  []
 
 <demosaic-smaller.png, id=4, 283.55937pt x 290.08376pt>
 File: demosaic-smaller.png Graphic file (type png)
 <use demosaic-smaller.png>
-Package pdftex.def Info: demosaic-smaller.png  used on input line 217.
+Package pdftex.def Info: demosaic-smaller.png  used on input line 218.
 (pdftex.def)             Requested size: 58.47102pt x 59.8128pt.
 
-Overfull \vbox (15.1629pt too high) detected at line 217
+Overfull \vbox (15.1629pt too high) detected at line 218
  []
 
 <histogram.png, id=6, 707.64375pt x 423.5825pt>
 File: histogram.png Graphic file (type png)
 <use histogram.png>
-Package pdftex.def Info: histogram.png  used on input line 233.
+Package pdftex.def Info: histogram.png  used on input line 234.
 (pdftex.def)             Requested size: 97.45073pt x 58.33163pt.
 <sobel-1.png, id=7, 1192.455pt x 502.87875pt>
 File: sobel-1.png Graphic file (type png)
 <use sobel-1.png>
-Package pdftex.def Info: sobel-1.png  used on input line 268.
+Package pdftex.def Info: sobel-1.png  used on input line 269.
 (pdftex.def)             Requested size: 146.1761pt x 61.63963pt.
 <blur.png, id=8, 1176.395pt x 465.74pt>
 File: blur.png Graphic file (type png)
 <use blur.png>
-Package pdftex.def Info: blur.png  used on input line 302.
+Package pdftex.def Info: blur.png  used on input line 303.
 (pdftex.def)             Requested size: 146.1761pt x 57.86913pt.
 <laplacian.png, id=9, 690.58pt x 434.62375pt>
 File: laplacian.png Graphic file (type png)
 <use laplacian.png>
-Package pdftex.def Info: laplacian.png  used on input line 344.
+Package pdftex.def Info: laplacian.png  used on input line 345.
 (pdftex.def)             Requested size: 146.1761pt x 91.99654pt.
 <interpolatenms.png, id=10, 1008.76875pt x 186.6975pt>
 File: interpolatenms.png Graphic file (type png)
 <use interpolatenms.png>
-Package pdftex.def Info: interpolatenms.png  used on input line 357.
+Package pdftex.def Info: interpolatenms.png  used on input line 358.
 (pdftex.def)             Requested size: 139.16528pt x 25.75572pt.
 <gabor1d.png, id=11, 814.04124pt x 523.9575pt>
 File: gabor1d.png Graphic file (type png)
 <use gabor1d.png>
-Package pdftex.def Info: gabor1d.png  used on input line 389.
+Package pdftex.def Info: gabor1d.png  used on input line 390.
 (pdftex.def)             Requested size: 146.1761pt x 94.08441pt.
 [1
 
 {/usr/local/texlive/2026basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2026basic/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc} <./demosaic-smaller.png> <./histogram.png> <./sobel-1.png> <./blur.png> <./laplacian.png> <./interpolatenms.png>]
-Overfull \hbox (5.41359pt too wide) in paragraph at lines 454--455
+Overfull \hbox (5.41359pt too wide) in paragraph at lines 455--456
  [] 
  []
 
 <classifierstage.png, id=41, 1141.26375pt x 521.95pt>
 File: classifierstage.png Graphic file (type png)
 <use classifierstage.png>
-Package pdftex.def Info: classifierstage.png  used on input line 471.
+Package pdftex.def Info: classifierstage.png  used on input line 472.
 (pdftex.def)             Requested size: 175.41013pt x 80.21648pt.
 <perceptron.png, id=42, 1074.0125pt x 435.6275pt>
 File: perceptron.png Graphic file (type png)
 <use perceptron.png>
-Package pdftex.def Info: perceptron.png  used on input line 476.
+Package pdftex.def Info: perceptron.png  used on input line 477.
 (pdftex.def)             Requested size: 146.1761pt x 59.28577pt.
 
-Overfull \hbox (31.878pt too wide) in paragraph at lines 481--485
+Overfull \hbox (31.878pt too wide) in paragraph at lines 482--486
 \T1/cmss/bx/n/8 Input:  $\OT1/cmr/bx/n/8 a[] \OT1/cmr/m/n/8 = \OT1/cmr/bx/n/8 u$\T1/cmss/m/n/8 ;  $[]$ 
  []
 
 
-Overfull \hbox (3.192pt too wide) detected at line 558
+Overfull \hbox (3.192pt too wide) detected at line 559
 []\OT1/cmr/m/n/8 (\OML/cmm/m/it/8 c; ^^\\OT1/cmr/m/n/8 ) = [][] \OML/cmm/m/it/8 p\OT1/cmr/m/n/8 (\OML/cmm/m/it/8 r\OT1/cmr/m/n/8 ) \OML/cmm/m/it/8 dr []\OT1/cmr/m/n/8 (\OML/cmm/m/it/8 ^^\\OT1/cmr/m/n/8 ) = [] [] [](\OML/cmm/m/it/8 c; ^^\\OT1/cmr/m/n/8 )
  []
 
@@ -753,7 +753,7 @@ Here is how much of TeX's memory you used:
  319 hyphenation exceptions out of 8191
  102i,15n,107p,488b,1018s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx6.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib8.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/cm-super/sfsi0800.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/cm-super/sfss0800.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/cm-super/sfsx0800.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/cm-super/sfsx0900.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb>
-Output written on main.pdf (2 pages, 2903585 bytes).
+Output written on main.pdf (2 pages, 2904006 bytes).
 PDF statistics:
  133 PDF objects out of 1000 (max. 8388607)
  71 compressed objects within 1 object stream

@@ -203,7 +203,8 @@ $M$: rows, $N$: columns, $k$: bits/pixel, $b$: total bits
 \subsection{Colour Representation}
 \textbf{RGB Space}
 $im(x, y, b)$ = $y$ pixels down, $x$ pixels to right in the $b$th channel \\
-\textbf{HSV Space} Hue Saturation Value
+\textbf{Convert to grayscale}: weighted sum of each colour \\
+\textbf{Colour \& intensity} are complementary; intensity is often stronger information for shape and structure
 
 \subsection{Bayer Filter}
 Each pixel only stores one color sample over it (RGB). Reduces intensity resolution.
