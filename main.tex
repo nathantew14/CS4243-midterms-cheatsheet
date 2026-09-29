@@ -209,10 +209,21 @@ Each pixel only stores one color sample over it (RGB). Reduces intensity resolut
 \sectionrule
 
 $P$: 2D array of pixel data; $p_{ij}$/$x_{ij}$: pixel input/output at position $(i,j)$; $w_{ij}$: window centred at $(i,j)$; \\ 
+% -- start of 2-column --
+\noindent
+\begin{minipage}[t]{0.49\linewidth}
+\vspace{0pt}
 $X$: entire image output
 \subsection{Point Processing}
-Brightness = $x_{ij} = p_{ij} + b$ (clip when needed) \\
+Brightness = $x_{ij} = p_{ij} + b$ \\
+(clip when needed) \\
 Intensity scaling = $x_{ij} = a \cdot p_{ij}$
+\end{minipage}\hfill
+\begin{minipage}[t]{0.42\linewidth}
+\vspace{0pt}
+\includegraphics[width=\linewidth]{gamma-mapping.png}
+\end{minipage}
+% -- end of 2-column --
 
 \textbf{Image Standardisation} resulting pixels are zero-mean, unit variance. Helps with numerical operations.
 \textbf{Gamma Mapping} $x_{ij} = 255 \cdot \left(\frac{p_{ij}}{255} \right)^{\gamma}$ \\
