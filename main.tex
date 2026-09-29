@@ -187,24 +187,14 @@ $M$: rows, $N$: columns, $k$: bits/pixel, $b$: total bits
 \subsection{Colour Representation}
 \textbf{RGB Space}
 $im(x, y, b)$ = $y$ pixels down, $x$ pixels to right in the $b$th channel \\
-<<<<<<< HEAD
+\textbf{Normalized RGB} Separates colour from intensity. \\
+$<r, g, b> = \dfrac{R}{R + G + B} + \dfrac{R}{R + G + B} + \dfrac{R}{R + G + B}$\\
 \textbf{Convert to grayscale}: weighted sum of each colour \\
-\textbf{HSV Space}: Hue = colour ($0$--$360^\circ$, 0 = red (orange $\rightarrow$ pink); Saturation = purity ($0$--$1$, 0 = grey); Value = brightness ($0$--$1$, 0 = black). Separates colour from intensity $\to$ robust to lighting\\
+\textbf{HSV Space}: Hue = colour ($0$--$360^\circ$), 0 = red (orange $\rightarrow$ pink); Saturation = purity ($0$--$1$, 0 = grey); Value = brightness ($0$--$1$, 0 = black). Separates colour from intensity $\to$ robust to lighting\\
 \textbf{Colour \& intensity} are complementary; intensity is often stronger information for shape and structure
-=======
-\textbf{Normalized RGB} Separates colour from intensity. 
-$<r, g, b> = \dfrac{R}{R + G + B} + \dfrac{R}{R + G + B} + \dfrac{R}{R + G + B}$
-\textbf{HSV Space}: Hue = colour ($0$--$360^\circ$, 0 = red (orange $\rightarrow$ pink); Saturation = purity ($0$--$1$, 0 = grey); Value = brightness ($0$--$1$, 0 = black). Separates colour from intensity $\to$ robust to lighting
->>>>>>> 8602d59 (feat: minor changes after 2526 paper)
 
 \subsection{Bayer Filter}
 Each pixel only stores one color sample over it (RGB). Reduces intensity resolution.
-<<<<<<< HEAD
-=======
-\begin{center}
-    \includegraphics[width=0.8\linewidth]{demosaic.png}
-\end{center}
->>>>>>> b78d527 (feat: remove mean-shift and add gamma)
 
 \resizebox{\linewidth}{!}{%
 \begin{tabular}{c c l c l}
@@ -224,16 +214,12 @@ $X$: entire image output
 Brightness = $x_{ij} = p_{ij} + b$ (clip when needed) \\
 Intensity scaling = $x_{ij} = a \cdot p_{ij}$
 
-<<<<<<< HEAD
 \textbf{Image Standardisation} resulting pixels are zero-mean, unit variance. Helps with numerical operations.
-=======
-\textbf{Image Standardisation} Preprocess to remove arbitrary brightness/contrast baselines. Algorithms process better when inputs are centered around 0. \\
 \textbf{Gamma Mapping} $x_{ij} = 255 \cdot \left(\frac{p_{ij}}{255} \right)^{\gamma}$ \\
 $\gamma < 1 \rightarrow$ raise mid-levels, $\uparrow$ range for darker areas \\ 
 $\gamma > 1 \rightarrow$ depress mid-levels, $\uparrow$ range for brighter areas \\ 
->>>>>>> b78d527 (feat: remove mean-shift and add gamma)
 
-\textbf{Histogram Stretching vs. Equalisation}
+\textbf{Histogram Stretching vs. Equalisation}\\
 \noindent\begin{minipage}{\linewidth}
     \centering
     \begin{minipage}{0.66\linewidth}
@@ -252,19 +238,15 @@ $$x = \frac{p-p_{\min}}{p_{\max}-p_{\min}}(L-1)$$
 \textbf{Cons:} extreme noise values prevent stretching
 
 \textbf{Equalisation:} redistribute via CDF \\
-$s$: pixel intensity, $L-1=k$
+$s$: pixel intensity, $L-1=k=255$
 $$s_{out} = (L-1)\cdot\sum_{i=0}^{r_{in}}p(i), \quad s_{output} = k \cdot CDF(s_{input})$$
 \textbf{Pros:} more dramatic contrast change; reveals poorly represented ranges automatically \\
 \textbf{Cons:} can amplify noise; context-blind
 
-<<<<<<< HEAD
 \textbf{Otsu's method}: find the optimal threshold $T^*$ that minimises the sum of variances of pixels below and above the threshold \\
 $$
     T^* = \operatorname*{argmin}_T \; w_1(T)\,\sigma_1^2(T) + w_2(T)\,\sigma_2^2(T)
 $$
-=======
-$L$ = no. of intensity levels (usually 256)
->>>>>>> 8602d59 (feat: minor changes after 2526 paper)
 
 \subsection{Cross-Correlation and Convolution}
 
