@@ -393,8 +393,7 @@ Deriv.\ of Gaussian $\rightarrow$ Grad.\ mag/orient. $\rightarrow$ NMS $\rightar
 \end{center}
 \vspace{-1em}
 
-\textbf{Hysterisis Thresholding}: Set two thresholds, $H$ to start edge curves, and $L$ to grow and link edges (if connected to boundary, mark said pixel as boundary) \\
-\textit{Algorithm} $E_H$: all values passing $H$, $E_L$: all values passing $L$. Let $D = E_L - E_H$ (keep only edges of D connected to $E_H$) $\Rightarrow$ Final image: $E_H \cup D'$
+\textbf{Hysterisis Thresholding}: Keep edges passing lower threshold if connected to edges passing higher threshold
 
 \textbf{Hough Transform}
 \textit{Algorithm} Given magnitude map $M(x, y)$ and orientation map $\theta(x, y)$, for every $(x, y)$
