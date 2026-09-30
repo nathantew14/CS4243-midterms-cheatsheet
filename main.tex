@@ -522,7 +522,7 @@ $\mbox{$\mathbf{z} = \mathbf{a}^{(L)} = W^{(L)}\mathbf{a}^{(L-1)} + \mathbf{b}^{
 \textbf{Dilated}. Enlarge receptive field without adding params or reducing resolution. 
 \begin{formulabox}
     $H_{output} = \left\lfloor \frac{H_{input} + 2P - D(K-1) - 1}{S} \right\rfloor + 1$ \\
-    $K_{eff} = d(k - 1) + 1$
+    $K_{eff} = D(K - 1) + 1$
 \end{formulabox}
 
 \textbf{Logits}: unrestricted real-value scales $\rightarrow$ convert into probability distribution using softmax.
@@ -564,7 +564,8 @@ $\mbox{$\mathbf{z} = \mathbf{a}^{(L)} = W^{(L)}\mathbf{a}^{(L-1)} + \mathbf{b}^{
 
 \subsection{Object Detection}
 \textbf{Window-based}: \quad Build/train model $\rightarrow$ Generate candidate windows $\rightarrow$ Score candidates $\rightarrow$ Resolve detections with NMS. \\
-\textit{Performance Evaluation} Area of Overlap Measure $AO(B_{gt}, B_p) = \frac{|B_{gt} \cap B_p|}{|B_{gt} \cup B_p|}$
+\textit{Performance Evaluation} Area of Overlap Measure:\\ i.e. $IoU=AO(B_{gt}, B_p) = \frac{|B_{gt} \cap B_p|}{|B_{gt} \cup B_p|}$ \\
+Dice Coefficient $\text{Dice}(B_{gt}, B_p) = \frac{2|B_{gt} \cap B_p|}{|B_{gt}| + |B_p|} = \frac{2 \cdot IoU}{1 + IoU}$
 
 \textbf{mAP (mean Average Precision):} standard object-detection metric, 0--1 or 0--100\%. We want high precision (few false positives) and high recall (few false negatives).
 
