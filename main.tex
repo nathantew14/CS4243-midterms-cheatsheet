@@ -188,7 +188,7 @@ $M$: rows, $N$: columns, $k$: bits/pixel, $b$: total bits
 \textbf{RGB Space}
 $im(x, y, b)$ = $y$ pixels down, $x$ pixels to right in the $b$th channel \\
 \textbf{Normalised RGB} Separates colour from intensity. \\
-$<r, g, b> = \dfrac{R}{R + G + B} + \dfrac{G}{R + G + B} + \dfrac{B}{R + G + B}$\\
+$r = \dfrac{R}{R + G + B},\ g = \dfrac{G}{R + G + B},\ b = \dfrac{B}{R + G + B}$\\
 \textbf{Convert to grayscale}: weighted sum of each colour \\
 \textbf{HSV Space}: Hue = colour ($0$--$360^\circ$), 0 = red (orange $\rightarrow$ pink); Saturation = purity ($0$--$1$, 0 = grey); Value = brightness ($0$--$1$, 0 = black). Separates colour from intensity $\to$ robust to lighting\\
 \textbf{Colour \& intensity} are complementary; intensity is often stronger information for shape and structure
@@ -400,10 +400,10 @@ Deriv.\ of Gaussian $\rightarrow$ Grad.\ mag/orient. $\rightarrow$ NMS $\rightar
 \begin{enumerate}
     \item Quantise parameter space $(m, b)$ by picking a range and step size, then discretise.
     \item Initialise accumulator array $A(m, b)$. Set each $A(m, b) = 0,  \forall m, b$.
-    \item $\forall (x_i, y_i), \forall m: b = x_im + y_i$. Increment $A(m, b) = A(m, b) + 1$
+    \item $\forall (x_i, y_i), \forall m: b = -x_im + y_i$. Increment $A(m, b) = A(m, b) + 1$
     \item Threshold and find local maxima of $A(m, b)$. $y = m^*x + b^*$
     \begin{formulabox}
-        Use $x\cos\theta + y\sin\theta = \rho$ — finite parameters ($\theta \in [0,360]$) vs. unbounded gradient $m$
+        Use $x\cos\theta + y\sin\theta = \rho$ — finite parameters vs. unbounded gradient $m$: $\theta \in [0^\circ, 180^\circ)$, $\rho \in [-D, D]$, $D = \sqrt{W^2 + H^2}$. \#$\rho$ bins $= \tfrac{2D}{\Delta\rho} + 1$ (e.g.\ $640 \times 480$, $\Delta\rho = 2$: 801 bins). A point in image space $\to$ sinusoid in $(\theta, \rho)$ space; sinusoids of collinear points intersect in one bin.
     \end{formulabox}
 \end{enumerate}
 \textbf{Pros: } Robust to outliers and noise due to local voting system. Ordinary least squares takes distance from \textit{all points}.
@@ -455,7 +455,7 @@ $\sigma$ -- rate of decay of exp. envelope
 \textit{Classifiers}
 \begin{enumerate}
     \item Nearest Neighbour Classifier: $i^* = \arg\min_i ||t(\Omega)-t(\Omega_i)||$ where $\hat{c} = y_{i^*}$
-    \item Nearest Class Mean: $\mu_c = \tfrac{1}{N_i}\sum{i:y_i=c}{t(\Omega_c)}$ where $\hat{c}(\Omega) = \arg\min ||t(\Omega)-\mu_c||$
+    \item Nearest Class Mean: $\mu_c = \tfrac{1}{N_c}\sum_{i:y_i=c} t(\Omega_i)$ where $\hat{c}(\Omega) = \arg\min_c ||t(\Omega)-\mu_c||$
 \end{enumerate}
 
 {\centering
