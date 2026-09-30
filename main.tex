@@ -187,8 +187,8 @@ $M$: rows, $N$: columns, $k$: bits/pixel, $b$: total bits
 \subsection{Colour Representation}
 \textbf{RGB Space}
 $im(x, y, b)$ = $y$ pixels down, $x$ pixels to right in the $b$th channel \\
-\textbf{Normalized RGB} Separates colour from intensity. \\
-$<r, g, b> = \dfrac{R}{R + G + B} + \dfrac{R}{R + G + B} + \dfrac{R}{R + G + B}$\\
+\textbf{Normalised RGB} Separates colour from intensity. \\
+$<r, g, b> = \dfrac{R}{R + G + B} + \dfrac{G}{R + G + B} + \dfrac{B}{R + G + B}$\\
 \textbf{Convert to grayscale}: weighted sum of each colour \\
 \textbf{HSV Space}: Hue = colour ($0$--$360^\circ$), 0 = red (orange $\rightarrow$ pink); Saturation = purity ($0$--$1$, 0 = grey); Value = brightness ($0$--$1$, 0 = black). Separates colour from intensity $\to$ robust to lighting\\
 \textbf{Colour \& intensity} are complementary; intensity is often stronger information for shape and structure
