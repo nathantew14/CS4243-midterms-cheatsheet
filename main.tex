@@ -102,16 +102,11 @@
   \rule{\linewidth}{0.6pt}
 \end{center}
 \vspace{-1.5em}
-\section*{Variables and Operations}
-\subsection*{Statistics}
-\begin{description}[leftmargin=1.4em, itemsep=1pt]
-  \item[Mean / Std. dev.] \hfill \\[0.3em]
-  \begin{minipage}[t]{0.48\linewidth}
-    $\bar{x} = \dfrac{1}{n}\sum_{i=1}^n x_i$
-  \end{minipage}%
-  \begin{minipage}[t]{0.48\linewidth}
-    $\sigma = \sqrt{\dfrac{1}{n}\sum_i (x_i-\bar x)^2}$
-  \end{minipage}
+\section*{Misc. Operations}
+\sectionrule
+\begin{description}[leftmargin=1em, itemsep=0.3pt]
+  \item[Mean/Std. dev.]
+  \mbox{$\bar{x}=\tfrac1n\sum_i x_i$,\; $\sigma=\sqrt{\tfrac1n\sum_i (x_i-\bar x)^2}$}
   \item[Normalisation] \mbox{$x' = \dfrac{x-\mu}{\sigma}$ \; (or min-max: $\dfrac{x-\min}{\max-\min}$)}
   \item[Gaussian (1D)] $G(x) = \dfrac{1}{\sqrt{2\pi}\,\sigma}\,e^{-x^2/2\sigma^2}$
   \item[Gaussian (2D)] $G(x,y) = \dfrac{1}{2\pi\sigma^2}\,e^{-(x^2+y^2)/2\sigma^2}$
@@ -123,22 +118,24 @@
 \textbf{Recall:} $\dfrac{TP}{TP+FN}$ & \textbf{F1-score:} $\dfrac{2\,P\,R}{P+R}$
 \end{tabular}}
 
-\subsection*{Calculus}
 \resizebox{\linewidth}{!}{%
 \begin{tabular}{@{}ll@{}}
 \textbf{Line eqns:} $y=mx+b$; \newline $x\cos\theta+y\sin\theta=\rho$
 &
 \textbf{Euclidean dist:} $d=\sqrt{\sum_i(x_i-y_i)^2}$
 \\[6pt]
-\textbf{Gradient:} $\nabla f=\left(\dfrac{\partial f}{\partial x},\dfrac{\partial f}{\partial y}\right)$
-&
-\textbf{Laplacian:} $\nabla^2 f=\dfrac{\partial^2 f}{\partial x^2}+\dfrac{\partial^2 f}{\partial y^2}$
-\\[6pt]
 \textbf{Orientation:} $\theta=\tan^{-1}\!\left(\dfrac{f_y}{f_x}\right)$
 &
 \textbf{Magnitude:} $\|\nabla f\|=\sqrt{f_x^2+f_y^2}$
+\\[6pt]
+\phantom{\textbf{Orientation:}} $\theta=\tan^{-1}\!\left(\dfrac{G_y}{G_x}\right)$
+&
+\phantom{\textbf{Magnitude:}} $\|\nabla f\|=\sqrt{G_x^2+G_y^2}$
 \end{tabular}}
 
+
+\noindent\textbf{Arctan: } $\arctan(0)=0,\quad \arctan(\pm1)=\pm\frac{\pi}{4}$\\[-2pt]
+$\arctan(\pm\frac{1}{\sqrt{3}})=\pm\frac{\pi}{6},\quad \arctan(\pm\sqrt{3})=\pm\frac{\pi}{3}$
 
 \section*{Lecture 1 - Computer Vision}
 \sectionrule
@@ -146,21 +143,7 @@
 
 \textbf{Digital Image Acquisition}
 
-\begin{center}
-\begin{tikzpicture}[
-    box/.style={draw, rounded corners, fill=gray!8, minimum height=0.7cm,
-                align=center, font=\tiny, inner sep=4pt},
-    arr/.style={-{Latex[length=1.5mm]}, thick},
-    every node/.append style={font=\tiny}
-  ]
-  \node[box] (light) {Light\\Source};
-  \node[box, right=1.5cm of light]  (scene) {Scene};
-  \node[box, right=1.5cm of scene]  (img)   {Imaging\\System};
-
-  \draw[arr] (light) -- (scene) node[midway, above, font=\tiny] {energy transfer};
-  \draw[arr] (scene) -- (img)   node[midway, above, font=\tiny] {energy transfer};
-\end{tikzpicture}
-\end{center}
+\vspace{0.5em}
 
 \textbf{Illuminance} ($i(x,y)$, $0 \leq i \leq \infty$): amount of source illumination incident on scene.\\
 \textbf{Reflectance} ($r(x,y)$, $0 \leq r \leq 1$): amount of source illumination reflected by objects on scene.
@@ -169,6 +152,7 @@
 \textbf{Aperture}: how much light you let in (too much: bokeh, too narrow sharp image\\
 \textbf{Shutter Speed}: how much time you give light to accumulate (slow: motion blur, fast: freeze action)
 
+\vspace{-0.8em}
 
 \begin{center}
     \small
@@ -179,7 +163,7 @@
         \hline
         Definition & smallest discernible detail & smallest discernible $\delta$ intensity level \\
         \hline
-        Measurement & pixels / unit distance & bit depth / pixel \\
+        Measurement & pixels / unit distance & bit depth / pixel value \\
         \hline
         Determined by & sampling & quantisation \\
         \hline
@@ -198,12 +182,15 @@ $M$: rows, $N$: columns, $k$: bits/pixel, $b$: total bits
 \subsection{File Extensions}
 \textbf{.bmp}: raw bit file (largest size) \\
 \textbf{.png}: predicts pixels based on neighbours, reconstructs original pixel value (lossless) \\
-\textbf{.jpg}: 8x8 image blocks w quantised spatial frequency coefficients, reconstruction is approximate (lossy)
+\textbf{.jpg}: 8x8 image blocks represented by 64 Discrete Cosine Transform coefficients, reconstruction is approximate (lossy). Zigzag ordering captures larger coefficients first; more efficient for Huffman entropy encoding
 
 \subsection{Colour Representation}
 \textbf{RGB Space}
 $im(x, y, b)$ = $y$ pixels down, $x$ pixels to right in the $b$th channel \\
+\textbf{Normalised RGB} Separates colour from intensity. \\
+$r = \dfrac{R}{R + G + B},\ g = \dfrac{G}{R + G + B},\ b = \dfrac{B}{R + G + B}$\\
 \textbf{Convert to grayscale}: weighted sum of each colour \\
+\textbf{HSV Space}: Hue = colour ($0$--$360^\circ$), 0 = red (orange $\rightarrow$ pink); Saturation = purity ($0$--$1$, 0 = grey); Value = brightness ($0$--$1$, 0 = black). Separates colour from intensity $\to$ robust to lighting\\
 \textbf{Colour \& intensity} are complementary; intensity is often stronger information for shape and structure
 
 \subsection{Bayer Filter}
@@ -220,76 +207,109 @@ Each pixel only stores one color sample over it (RGB). Reduces intensity resolut
 
 \section*{Lecture 2 - Point Processing and Filtering}
 \sectionrule
-\textbf{Point processing: } $x_{ij} = f(p_{ij})$ \\
-\textbf{Filtering: } $x_{ij} = f(w_{ij})$ 
 
+$P$: 2D array of pixel data; $p_{ij}$/$x_{ij}$: pixel input/output at position $(i,j)$; $w_{ij}$: window centred at $(i,j)$; \\ 
+% -- start of 2-column --
+\noindent
+\begin{minipage}[t]{0.49\linewidth}
+\vspace{0pt}
+$X$: entire image output
 \subsection{Point Processing}
-Brightness = $x_{ij} = p_{ij} + b$ (clip when needed) \\
+Brightness = $x_{ij} = p_{ij} + b$ \\
+(clip when needed) \\
 Intensity scaling = $x_{ij} = a \cdot p_{ij}$
+\end{minipage}\hfill
+\begin{minipage}[t]{0.42\linewidth}
+\vspace{0pt}
+\includegraphics[width=\linewidth]{gamma-mapping.png}
+\end{minipage}
+% -- end of 2-column --
 
-\textbf{Image Standardisation} Preprocess to remove arbitrary brightness/contrast baselines. Algorithms process better when inputs are centered around 0.
+\textbf{Image Standardisation} resulting pixels are zero-mean, unit variance. Helps with numerical operations.
+\textbf{Gamma Mapping} $x_{ij} = 255 \cdot \left(\frac{p_{ij}}{255} \right)^{\gamma}$ \\
+$\gamma < 1 \rightarrow$ raise mid-levels, $\uparrow$ range for darker areas \\ 
+$\gamma > 1 \rightarrow$ depress mid-levels, $\uparrow$ range for brighter areas \\ 
 
-\textbf{Histogram Stretching vs. Equalisation}
-\begin{center}
-    \includegraphics[width=0.5\linewidth]{histogram.png}
-\end{center}
+\textbf{Histogram Stretching vs. Equalisation}\\
+\noindent\begin{minipage}{\linewidth}
+    \centering
+    \begin{minipage}{0.66\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{histogram.png}
+    \end{minipage}\hfill
+    \begin{minipage}{0.3\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{Unequalized_Histogram.svg.png}\\[4pt]
+        \includegraphics[width=\linewidth]{Equalized_Histogram.svg.png}
+    \end{minipage}
+\end{minipage}
 \textbf{Stretching:} linear rescale to full range
-$$s = \frac{r-r_{\min}}{r_{\max}-r_{\min}}(L-1)$$
-\textbf{Pros:} improves contrast; preserves relative brightness relationships \\
-\textbf{Cons:} limited effect if histogram already spans most of the range
+$$x = \frac{p-p_{\min}}{p_{\max}-p_{\min}}(L-1)$$
+\textbf{Pros:} improve contrast; keeps relative brightness \\
+\textbf{Cons:} extreme noise values prevent stretching
 
-\textbf{Equalisation:} redistribute via CDF for uniform histogram
-$$s = (L-1)\sum_{k=0}^{r} p(k), \quad s_{output} = k \cdot CDF(s_{input})$$
+\textbf{Equalisation:} redistribute via CDF \\
+$s$: pixel intensity, $L-1=k=255$
+$$s_{out} = (L-1)\cdot\sum_{i=0}^{r_{in}}p(i), \quad s_{output} = k \cdot CDF(s_{input})$$
 \textbf{Pros:} more dramatic contrast change; reveals poorly represented ranges automatically \\
-\textbf{Cons:} can amplify noise; alters clinically irrelevant contrast
+\textbf{Cons:} can amplify noise; context-blind
 
-\subsection{Cross-Correlation and Convolution}
+\textbf{Otsu's method}: find the optimal threshold $T^*$ that minimises the sum of variances of pixels below and above the threshold \\
+$$
+    T^* = \operatorname*{argmin}_T \; w_1(T)\,\sigma_1^2(T) + w_2(T)\,\sigma_2^2(T)
+$$
+
+\subsection{Linear Filtering}
 
 \textbf{Purpose:} smoothing/averaging with neighbours reduces impulse (salt-and-pepper) noise; also used for edge detection and template matching. \\
-\textbf{Cross-Correlation:} slide kernel $F$ as-is, multiply \& sum
-$$x_{ij} = \sum_{u}\sum_{v} f_{uv} \cdot p_{i+u,\,j+v}, \qquad X = P \circledast F$$
-\textbf{Convolution:} flip kernel $180^\circ$ first, then multiply \& sum. Commutative and associative.
-$$x_{ij} = \sum_{u}\sum_{v} f_{uv} \cdot p_{i-u,\,j-v}, \qquad X = P * F$$
-\textbf{Equal when:} kernel is symmetric under $180^\circ$ rotation, i.e.\ $F = F_{flip}$ (e.g.\ box filter, Gaussian). 
+\textbf{Cross-Correlation:} slide kernel $F$ as-is, multiply \& sum.\\
+Measures similarity petween patch and template
+$$x_{ij} = \sum_{u=-k}^k\sum_{v=-k}^k f_{uv} \cdot p_{i+u,\,j+v}, \qquad X = P \otimes F$$
+\textbf{Convolution:} flip kernel $180^\circ$ first. Commutative and associative. Applies image transformation.
+$$x_{ij} = \sum_{u=-k}^k\sum_{v=-k}^k f_{uv} \cdot p_{i-u,\,j-v}, \qquad X = P * F$$
+\textbf{Equal when:} kernel is symmetric under $180^\circ$ rotation, i.e.\ $F = F_{flip}$ (e.g.\ box filter, Gaussian). \\
 
-\textbf{Gaussian Kernel}\\
-Used as the filter $f_{uv}$ in cross-correlation/convolution above to smooth/blur.
-Larger $\sigma$ = more blur.
+\textbf{Normalised cross-correlation:}
+\vspace{-0.8em}
+\begin{center}
+    \includegraphics[width=\linewidth]{norm-cross-correlation.png}
+\end{center}
+\vspace{-0.7em}
 
-\vspace{4pt}
+\textbf{Box filter}: simple averaging, can cause ringing effect\\
+\textbf{Gaussian kernel}: Closer pixels have greater effect. Larger $\sigma$ = more blur. Kernel size typically 6x of $\sigma$.
+
 \textbf{Detail extraction (unsharp masking):}\\
-$\text{Details} = \text{Original} - \text{Blurred}$
-\quad $\Rightarrow$ \quad
-$\text{Sharpened} = \text{Original} + \alpha\cdot\text{Details}$
+$\text{Details} = \text{Orig.} - \text{Blurred}$;
+$\text{Sharp} = \text{Orig.} + \alpha\cdot\text{Details}$
+
+\subsection{Non-Linear Filtering}
+\textbf{Median filtering:} De-noise: without introducing new values; 
+preserves edges; \textbf{Mean}; \textbf{Min}; \textbf{max:} max-pooling summarises 
+neighbourhoods in feature map in CNNs\\
+\textbf{Morphology:} open: erode then dilate $\rightarrow$ remove small objects; 
+close: dilate then erode $\rightarrow$ fills holes.
 
 \section*{Lecture 3 - Gradients}
 \sectionrule
 \subsection{Sobel Filter}
 \begin{center}
-    \includegraphics[width=0.75\linewidth]{sobel-1.png}
+    \includegraphics[width=\linewidth]{sobel-1.png}
 \end{center}
+\vspace{-1.0em}
 
 Vertical filter $S_y$ detects horizontal edges; 
-horizontal filter $S_x$ detects vertical edges (both across gradient). \\
-The gradient points across the edge, ie direction is normal to the edge. Gradient will point from darker to brighter intensities. The edge occurs at peaks.
+horizontal filter $S_x$ detects vertical edges (edge $\perp$ gradient). \\
+Gradient points from dark to bright intensities. Edge occurs at peaks. 
+Edge strength = gradient magnitude. \\
+Applies blurring as differentiation is sensitive to noise.
 
-A 2D filter is \textbf{separable} if it can be written as an outer product of a
-column vector and a row vector:
-$$K = u\,v^T$$
-Convolving with the full 2D kernel $K$ is equivalent to convolving with $u$ then $v$
-separately. Cheaper since $1\times n + n\times 1$ multiplications beat $n\times n$.
-
-\vspace{4pt}
-\textbf{Example — Vertical Sobel filter:}
-\begin{enumerate}[leftmargin=1.2em, itemsep=1pt]
-  \item \textbf{Smooth} horizontally: $[1,\,2,\,1]$
-  \item \textbf{Differentiate} vertically: $[1,\,0,\,-1]^T$
-\end{enumerate}
-$$S_y = \begin{bmatrix}1\\0\\-1\end{bmatrix}\begin{bmatrix}1 & 2 & 1\end{bmatrix}$$
+\textbf{2D Separable filter}: $K=uv^T$ (outer product of column $u$, row $v$).
+Conv with $K$ = conv with $u$ then $v$. Cost: $2n$ vs $n^2$ mults.
 
 \textbf{Computing gradients}
 \begin{enumerate}
-    \item Convolve gradient filter with image f to compute image gradient components \\ 
+    \item Convolve gradient filter with image f to compute \\image gradient components \\ 
     $\mathbf{G_x} = \dfrac{\partial \boldsymbol{f}}{\partial x} = \boldsymbol{S}_x * \boldsymbol{f}$
     \qquad
     $\mathbf{G_y} = \dfrac{\partial \boldsymbol{f}}{\partial y} = \boldsymbol{S}_y * \boldsymbol{f}$
@@ -300,13 +320,17 @@ $$S_y = \begin{bmatrix}1\\0\\-1\end{bmatrix}\begin{bmatrix}1 & 2 & 1\end{bmatrix
 Differentiation accentuates noise (multiplicative factor proportional to frequency) $\Rightarrow$ blur before using derivative features to remove noise (but the edge will blur).
 \vspace{-1.5em}
 \begin{center}
-    \includegraphics[width=0.75\linewidth]{blur.png}
+    \includegraphics[width=\linewidth]{blur.png}
 \end{center}
-Stronger Gaussian returns more high-frequency noise $\rightarrow$ spreads edge across larger region.
+\vspace{-1.7em}
+\begin{center}
+    \includegraphics[width=\linewidth]{gaussianD.png}
+\end{center}
+\vspace{-1.0em}
 
-\textbf{Differentiation Property: } $\tfrac{\partial}{\partial x}(h * f) = \left(\tfrac{\partial}{\partial x}h\right) * f$ \\
-Differentiation is a convolution operation:\\
-$f * [1\;\;0\;\;{-1}]$ (x-direction) or $f * [1\;\;0\;\;{-1}]^T$ (y-direction)
+\textbf{Differentiation Property:}
+$$\large\frac{\partial}{\partial x}(h*f)=(\large\frac \partial{\partial x}h)*f=(h*g)*f$$
+$g$: filter kernel, $h$: Gaussian kernel, $f$: input
 
 \subsection{Laplacian Operator}
 \begin{formulabox}
@@ -340,45 +364,49 @@ $f * [1\;\;0\;\;{-1}]$ (x-direction) or $f * [1\;\;0\;\;{-1}]^T$ (y-direction)
 
 \textbf{Laplacian of Gaussian Filter}
 
-\vspace{-1em}
-\begin{center}
-    \includegraphics[width=0.75\linewidth]{laplacian.png}
-\end{center}
-\vspace{-1.5em}
+\noindent\begin{minipage}[c]{0.75\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{laplacian.png}
+\end{minipage}%
+\begin{minipage}[c]{0.25\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{laplace-filters.png}
+\end{minipage}
+
 \textbf{Zero crossings}. Localise edges more accurately but less convenient to use.
 
 \subsection{Canny Edge Detector}
 Deriv.\ of Gaussian $\rightarrow$ Grad.\ mag/orient. $\rightarrow$ NMS $\rightarrow$ Hysteresis thresh.\\
-\textbf{Non-Maximum Suppression}: Only keep local maximums for edges (so edges will be one pixel wide.
+\textbf{Non-Maximum Suppression}: Only keep local maximums for edges (so edges will be one pixel wide).\\
 \textit{Algorithm} Given magnitude map $M(x, y)$ and orientation map $\theta(x, y)$, for every $(x, y)$
 \begin{enumerate}
     \item Find two neighbours in that direction according to the nearest angle ($+\theta, -\theta$)
     \item Interpolate the two neighbour values, with value $= x * (a - b) + b$, where $a, b$ are the two real neighbour pixel magnitudes, and $x$ is the fractional distance, $x = \tan(\theta mod 90)$
-    \begin{center}
-        \includegraphics[width=0.75\linewidth]{interpolatenms.png}
-    \end{center}
     \item Compare centre pixel to interpolated neighbours. 
     \begin{formulabox}
         If $M(x, y) \geq $ both neighbours: keep $M(x, y)$
         Else: suppress and set $M(x, y) = 0$
     \end{formulabox}
 \end{enumerate}
+\begin{center}
+    \includegraphics[width=\linewidth]{interpolation.png}
+\end{center}
+\vspace{-1em}
 
-\textbf{Hysterisis Thresholding}: Set two thresholds, $H$ to start edge curves, and $L$ to grow and link edges (if connected to boundary, mark said pixel as boundary) \\
-\textit{Algorithm} $E_H$: set of all values passing $H$, $E_L$: set of all values passing $L$. Let $D = E_L - E_H$ (keep only edges of D connected to $E_H$) \\
-Final image: $E_H \cup D'$
+\textbf{Hysterisis Thresholding}: Keep edges passing lower threshold if connected to edges passing higher threshold
 
 \textbf{Hough Transform}
 \textit{Algorithm} Given magnitude map $M(x, y)$ and orientation map $\theta(x, y)$, for every $(x, y)$
 \begin{enumerate}
     \item Quantise parameter space $(m, b)$ by picking a range and step size, then discretise.
     \item Initialise accumulator array $A(m, b)$. Set each $A(m, b) = 0,  \forall m, b$.
-    \item $\forall (x_i, y_i), \forall m: b = x_im + y_i$. Increment $A(m, b) = A(m, b) + 1$
+    \item $\forall (x_i, y_i), \forall m: b = -x_im + y_i$. Increment $A(m, b) = A(m, b) + 1$
     \item Threshold and find local maxima of $A(m, b)$. $y = m^*x + b^*$
     \begin{formulabox}
-        Use $x\cos\theta + y\sin\theta = \rho$ — finite parameters ($\theta \in [0,360]$) vs. unbounded gradient $m$
+        Use $x\cos\theta + y\sin\theta = \rho$ — finite parameters vs. unbounded gradient $m$: $\theta \in [0^\circ, 180^\circ)$, $\rho \in [-D, D]$, $D = \sqrt{W^2 + H^2}$. \#$\rho$ bins $= \tfrac{2D}{\Delta\rho} + 1$ (e.g.\ $640 \times 480$, $\Delta\rho = 2$: 801 bins). A point in image space $\to$ sinusoid in $(\theta, \rho)$ space; sinusoids of collinear points intersect in one bin.
     \end{formulabox}
 \end{enumerate}
+\textbf{Pros: } Robust to outliers and noise due to local voting system. Ordinary least squares takes distance from \textit{all points}.
 Can be made more efficient by voting only near its measured gradient orientation.
 
 \section*{Lecture 4 - Regions}
@@ -397,18 +425,15 @@ f_{mn} = \underbrace{\frac{1}{2\pi\sigma^2}\exp\left[-\frac{m^2+\gamma^2 n^2}{2\
 \;\, \underbrace{\sin\left[\frac{2\pi(\cos[\omega]m+\sin[\omega]n)}{\lambda}+\phi\right]}_{\substack{\text{2D-Sinusoid} \\ \text{selects orientation and frequency}}}
 $}
 \]
-$\omega$ -- orientation of sinusoid in 2D \\
-$\lambda$ -- wavelength of sinusoid (inversely proportional to $f$) \\
-$\phi$ -- phase of sinusoid; shift from center of kernel
-$\gamma$ -- aspect ratio of envelope coverage ($\gamma = 1$ means circular, otherwise elliptical) \\
-$\sigma$ -- rate of decay of exponential envelope
+$\omega$ -- orientation in 2D; $\lambda$ -- wavelength of sinusoid (inversely proportional to $f$); 
+$\phi$ -- phase of sinusoid; shift from center of kernel \\
+$\gamma$ -- aspect ratio of envelope coverage ($\gamma = 1$ means circular, else elliptical);
+$\sigma$ -- rate of decay of exp. envelope
 
 \subsection{Multi-Scale Reasoning}
-\textbf{Smoothing} suppresses details, which we want to ignore variations in smaller distances to focus on larger structure.
-\textit{Gaussian image pyramid} $\rightarrow$ progressively blur then downsample at fixed stride or downsampling rate. \\
-We should smooth before downsampling to prevent aliasing (high-frequency can mask as low frequency, ringing).
-
-\textbf{Scale selection} Measure responses on multiple scales. Choose maximum filter size that matches structure size to detect structures. 
+\textbf{Smoothing}: suppress fine detail $\to$ focus on larger structure. \\
+\textit{Gaussian pyramid}: blur, then downsample (fixed rate). Smooth first to avoid aliasing (high freq.\ masquerading as low). \\
+\textbf{Scale selection}: filter at multiple scales; pick the response peak (filter size matching structure size).
 
 \textbf{Single vs Multi-scale Representation} Given $r_i, \rho_i$ corresponding to response and scale at $i$. \\
 \textit{Single scale}: $r = [r_1, r_2, ..., r_k]$ \\
@@ -424,39 +449,29 @@ We should smooth before downsampling to prevent aliasing (high-frequency can mas
 \end{enumerate}
 
 \begin{formulabox}
-    To compare textures, $D(\Omega_A, \Omega_B) = ||t(\Omega_a) - t(\Omega_a)||$, i.e. $D$ is the Euclidean distance.
+    To compare textures, $D(\Omega_A, \Omega_B) = ||t(\Omega_a) - t(\Omega_b)||$, i.e. $D$ is the Euclidean distance.
 \end{formulabox}
 
 \textit{Classifiers}
 \begin{enumerate}
     \item Nearest Neighbour Classifier: $i^* = \arg\min_i ||t(\Omega)-t(\Omega_i)||$ where $\hat{c} = y_{i^*}$
-    \item Nearest Class Mean: $\mu_c = \tfrac{1}{N_i}\sum{i:y_i=c}{t(\Omega_c)}$ where $\hat{c}(\Omega) = \arg\min ||t(\Omega)-\mu_c||$
+    \item Nearest Class Mean: $\mu_c = \tfrac{1}{N_c}\sum_{i:y_i=c} t(\Omega_i)$ where $\hat{c}(\Omega) = \arg\min_c ||t(\Omega)-\mu_c||$
 \end{enumerate}
-\vspace{-1.5em}
 
-\begin{center}
+{\centering
 \begin{tikzpicture}[
-    box/.style={draw, rounded corners, fill=gray!8, minimum height=0.5cm,
-                align=center, font=\tiny, inner sep=4pt},
-    arr/.style={-{Latex[length=1.5mm]}, thick},
-    caption/.style={font=\tiny, align=center, text width=2cm},
-    every node/.append style={font=\tiny}
+    box/.style={draw, rounded corners=1pt, fill=gray!8, align=center,
+                font=\tiny, inner sep=2pt},
+    arr/.style={-{Latex[length=1mm]}}
   ]
-  \node[box] (filter) {Filtering};
-  \node[box, right=1.5cm of filter]  (pool) {Pooling};
-  \node[box, right=1.5cm of pool]  (class)   {Classifier};
+  \node[box] (f) {\textbf{Filtering}\\ local features\\ DoG/LoG, Gabor};
+  \node[box, right=0.4cm of f] (p) {\textbf{Pooling}\\ $\downarrow$ resolution\\ min/max/avg};
+  \node[box, right=0.4cm of p] (c) {\textbf{Classifier}\\ predicts label\\ NN, nearest mean};
+  \draw[arr] (f)--(p);
+  \draw[arr] (p)--(c);
+\end{tikzpicture}\par}
 
-  \draw[arr] (filter) -- (pool) ;
-  \draw[arr] (pool) -- (class);
-
-  \node[caption, below=0.1cm of filter] {extracts local features \\ deriv/Laplacian of \\ Gaussian, Gabor};
-  \node[caption, below=0.1cm of pool]  {reduces spatial resolution \\ Min/Max \\ Average};
-  \node[caption, below=0.1cm of class]  {predicts final label \\ Nearest neighbour \\ Nearest mean};
-\end{tikzpicture}
-\end{center}
-\vspace{-1.5em}
-
-\section*{Topic 5 - CNNs}
+\section*{Lecture 5 - CNNs}
 \sectionrule
 \textbf{Receptive field}: set of image pixels an intermediate output pixel depends on. \\
 \textit{Recursive formula} (per layer $l$, with kernel $k_l$, stride $s_l$):
@@ -472,12 +487,15 @@ $r_l = r_{l-1} + (k_l - 1)\, j_{l-1}, \qquad j_l = j_{l-1}\, s_l$
     \includegraphics[width=0.9\linewidth]{classifierstage.png}
 \end{center}
 
-\textbf{Perceptron}
-\begin{center}
-    \includegraphics[width=0.75\linewidth]{perceptron.png}
-\end{center}
-No of learnable parameters = weights (edges) + perceptrons (neurons). \\
-Neurons are total of all possible output nodes (all layers except input). We add perceptrons as bias terms.
+\textbf{Perceptron}\\
+\begin{minipage}[c]{0.5\linewidth}
+  \includegraphics[width=\linewidth]{perceptron.png}
+\end{minipage}%
+\hfill
+\begin{minipage}[c]{0.45\linewidth}\footnotesize
+  \#params = weights (edges) + biases (one per non-input neuron).\\
+  Neurons = all nodes except the input layer.
+\end{minipage}
 
 \textbf{MLP Formalism} \\
 \noindent\textbf{Input:} \quad
@@ -489,9 +507,8 @@ $\mathbf{a}^{(0)} = \mathbf{u}$;
 \mbox{$\mathbf{a}^{(\ell)} = \sigma\Big(W^{(\ell)}\mathbf{a}^{(\ell-1)} + \mathbf{b}^{(\ell)}\Big), \; \ell = 1,\dots,L-1$}
 \]
 \footnotesize
-$\boldsymbol{a}^{(\ell)}$: representation in layer $\ell$. \\
-$W^{(\ell)}$: weights in layer $\ell$. \\
-$\boldsymbol{b}^{(\ell)}$: biases in layer $\ell$. \\
+$\boldsymbol{a}^{(\ell)}$: representation; $W^{(\ell)}$: weights; 
+$\boldsymbol{b}^{(\ell)}$: biases in layer $\ell$; 
 $\sigma$: non-linear activation function
 
 \noindent\textbf{Output}\textbf{ layer:} \quad
@@ -499,15 +516,18 @@ $\mbox{$\mathbf{z} = \mathbf{a}^{(L)} = W^{(L)}\mathbf{a}^{(L-1)} + \mathbf{b}^{
 
 \subsection{Convolution}
 \begin{formulabox}
-    No of learnable parameters: $$k^2 \cdot C_{in} \cdot C_{out} + C_{out}$$
+    No. of learnable parameters: $k^2 \cdot C_{in} \cdot C_{out} + C_{out}$
 \end{formulabox}
 \textbf{Strided}. Downsample each feature map. Reduce spatial resolution.
 \textbf{Dilated}. Enlarge receptive field without adding params or reducing resolution. 
 \begin{formulabox}
-    $H_{output} = \left\lfloor \frac{H_{input} + 2P - D(K-1) - 1}{S} \right\rfloor + 1$
+    $H_{output} = \left\lfloor \frac{H_{input} + 2P - D(K-1) - 1}{S} \right\rfloor + 1$ \\
+    $K_{eff} = D(K - 1) + 1$
 \end{formulabox}
 
 \textbf{Logits}: unrestricted real-value scales $\rightarrow$ convert into probability distribution using softmax.
+
+\textbf{Softmax:} $\sigma(\mathbf{z})_i = \frac{e^{z_i}}{\sum_{j=1}^{C} e^{z_j}}$ for $i = 1, \dots, C$ classes. \\
 
 \subsection{Loss functions}
 \begin{center}
@@ -544,7 +564,8 @@ $\mbox{$\mathbf{z} = \mathbf{a}^{(L)} = W^{(L)}\mathbf{a}^{(L-1)} + \mathbf{b}^{
 
 \subsection{Object Detection}
 \textbf{Window-based}: \quad Build/train model $\rightarrow$ Generate candidate windows $\rightarrow$ Score candidates $\rightarrow$ Resolve detections with NMS. \\
-\textit{Performance Evaluation} Area of Overlap Measure $AO(B_{gt}, B_p) = \frac{|B_{gt} \cap B_p|}{|B_{gt} \cup B_p|}$
+\textit{Performance Evaluation} Area of Overlap Measure:\\ i.e. $IoU=AO(B_{gt}, B_p) = \frac{|B_{gt} \cap B_p|}{|B_{gt} \cup B_p|}$ \\
+Dice Coefficient $\text{Dice}(B_{gt}, B_p) = \frac{2|B_{gt} \cap B_p|}{|B_{gt}| + |B_p|} = \frac{2 \cdot IoU}{1 + IoU}$
 
 \textbf{mAP (mean Average Precision):} standard object-detection metric, 0--1 or 0--100\%. We want high precision (few false positives) and high recall (few false negatives).
 
@@ -559,6 +580,19 @@ $\mbox{$\mathbf{z} = \mathbf{a}^{(L)} = W^{(L)}\mathbf{a}^{(L-1)} + \mathbf{b}^{
 \]
 
 \subsection{CNN-Based Object Detection}
+\textbf{R-CNNs (Region-Based ConvNets)}: Generate region candidates, extract CNN features for each region, regress bounding box (x,y,h,w) for each region, predict label per region. \\
+\textbf{Fast R-CNNs}: Extract CNN features in one pass by locating $(x, y)$ in CNN feature maps and extracting features w ROI pooling. \\
+\textbf{YOLO (v2) -- Anchor-based Detection}
+\begin{itemize}
+  \item Split image into $S \times S$ cells, each with predefined \textbf{anchors} (boxes w/ fixed sizes \& aspect ratios)
+  \item Predict at every (grid location, anchor) pair
+  \item \textbf{Objectness}: $P(\text{obj})$ for box. Predict class + box, skip if no object.
+  \item \textbf{Class score}: $P(\text{class} \mid \text{obj})$
+  \item \textbf{Box adjustment}: $P(\text{coords} \mid \text{obj})$, offsets to anchor
+\end{itemize}
+\textbf{Loss:} 
+$\mathcal{L}=\mathcal{L}_{\text{obj}}+\lambda_{\text{box}}\mathcal{L}_{\text{box}}+\mathcal{L}_{\text{class}}$;
+\footnotesize $\mathcal{L}_{\text{obj}}$: all anchors; $\mathcal{L}_{\text{box}},\mathcal{L}_{\text{class}}$: object anchors only
 
 \section*{Topic 6 - Segmentation}
 \sectionrule
@@ -566,8 +600,6 @@ Separation of images into regions/objects. \\
 \textbf{Semantic}: each pixel has a class label. Identify foreground and background. \\ 
 \textbf{Instance}: Each pixel has an object it belongs to.
 \textbf{Panoptic}: Combine semantic and instance.
-
-\textit{Pixel affinity}: evidence that makes two pixels belong to the same region (color, texture, etc.).
 
 \textbf{k-Means Clustering}: Iteratively re-assign points to nearest cluster center
 \begin{enumerate}
@@ -582,7 +614,7 @@ Separation of images into regions/objects. \\
 \end{itemize}
 \textbf{Simple Linear Iterative Clustering (SLIC)}
 \begin{itemize}
-    \item \textit{Superpixel}: Group of pixels that share common traits. Compact and meaningfyl representation.
+    \item \textit{Superpixel}: Group of pixels sharing common traits.
     \item No of pixels: $n_{tp}$; Target no of superpixels: $n_{sp}$
     \item Initial width of each superpixel: $s = \sqrt{n_{tp} / n_{sp}}$
     \item Features: $z = [r,g,b,x,y]$
@@ -593,39 +625,12 @@ Separation of images into regions/objects. \\
 \end{itemize}
 \begin{enumerate}
     \item Split img. into grid of size $s \times s$. Set cluster centers as lowest gradient position in $3 \times 3$ neighborhood from superpixel center. 
-    \item For each cluster center, check distance to all pixels within $2s \times 2s$ neighborhood. Assign pixels to closest checked center.
-    \item Update cluster centers using mean; repeat until converged (Same as k-Means)
+    \item For each center, check distance to all pixels within $2s \times 2s$ neighborhood. Assign pixels to closest checked center.
+    \item Update centers using mean; repeat until converged
     \item Optional: Replace superpixel region by average value to create stained glass effect
 \end{enumerate}
 \begin{itemize}
     \item Modification of k-Means: Not random initialization, Compute pixel's distance only to closest set of centers
-\end{itemize}
-\textbf{Mean-Shift Clustering}: Find local density maxima in feature space 
-\begin{itemize}
-    \item \textit{Attraction basin}: {Region in feature space for which all trajectories of centroids lead to same mode}
-    \item \textit{Cluster}: {All data points in attraction basin of a mode}
-\end{itemize}
-\begin{enumerate}
-    \item For each data point:
-    \begin{enumerate}
-        \item Define window around and get centroid
-        \item Shift window to centroid
-        \item Repeat until window centroid stops moving
-    \end{enumerate}
-\end{enumerate}
-\begin{itemize}
-    \item Segmentation with Mean Shift: Do mean shift and merge pixels in same attraction basin
-    \item Choosing window size: Trial and error, Sample points and use avg. dist. to knn. (Num. of neighbors needs to be large enough to ensure increase in density)
-    \begin{itemize}
-        \item Larger window size $\rightarrow$ Fewer clusters
-    \end{itemize}
-    \item Pros: No assumptions on cluster shape, 1 parameter, Finds variable num. of modes (vs. specified $k$ in k-Means), Robust to outliers
-    \item Cons: Choosing $h$, Slow, Scales poorly with feature space dimension
-    \item Optimizations:
-    \begin{itemize}
-        \item After each run of mean shift, assign all points within radius $r$ of end point to same cluster
-        \item Assign points in radius $c < r$ of search path to mode
-    \end{itemize}
 \end{itemize}
 
 \end{multicols}
